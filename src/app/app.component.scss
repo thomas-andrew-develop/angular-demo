@@ -1,0 +1,14 @@
+.wrap-main{
+  min-height: -webkit-calc(100vh - 230px);
+  min-height: -moz-calc(100vh - 230px);
+  min-height: calc(100vh - 230px);
+  display: inline-block;
+  width: 100%;
+}
+
+.container{
+  max-width: 800px;
+  width: 100%;
+  padding: 0 15px;
+  margin: 0 auto;
+}
