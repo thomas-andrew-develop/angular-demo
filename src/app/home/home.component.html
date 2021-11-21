@@ -1,1 +1,40 @@
 <h1>This is home</h1>
+
+
+<form (ngSubmit)="onSubmit(f)" #f="ngForm">
+  <div class="form-group mb-3">
+    <input type="text" ngModel name="userName" class="form-control" placeholder="userName"/>
+  </div>
+  <div class="mb-3"><button class="btn btn-info" type="button">Suggest name</button></div>
+  <div class="mb-3">
+    <input type="email" ngModel name="email" class="form-control" placeholder="email" required email #email="ngModel"/>
+    <p class="help-block text-danger" *ngIf="!email.valid && email.touched">Please enter email</p>
+  </div>
+  <div class="mb-3">
+    <select ngModel name="secret" class="form-control" [ngModel]="defaultQuestion">
+      <option value="pet">Pet</option>
+      <option value="teacher">Teacher</option>
+    </select>
+  </div>
+  <div class="mb-3">
+    <textarea class="form-control mb-3" [(ngModel)]="question" name="question" rows="3"></textarea>
+    <p>Your reply: {{question}}</p>
+  </div>
+  <div class="mb-3 radio" *ngFor="let gender of genders">
+    <label>
+      <input
+        type="radio"
+        name="gender"
+        ngModel
+        [value]="gender"
+      />
+      {{gender}}
+    </label>
+  </div>
+
+  <button class="btn btn-primary" type="submit" [disabled]="f.invalid">Submit</button>
+</form>
+
+<pre>{{ f.value | json }}</pre>
+
+<button (click)="resetName()">Reset</button>
