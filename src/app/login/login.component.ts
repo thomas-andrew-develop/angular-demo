@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators, AbstractControl } from '@angular/forms';
-import { AppService } from '../Services/app.service'; 
+import { AppService } from '../Services/app.service';
+import {HttpParams} from "@angular/common/http";
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -32,7 +33,11 @@ export class LoginComponent implements OnInit {
   onSubmit(): void {
     this.submitted = true;
     if(this.formLogin.valid){
-      this.AppService.login(this.formLogin.value).subscribe(data => {
+      const params = new HttpParams()
+        .set('username', this.formLogin.controls['username'].value)
+        .set('password', this.formLogin.controls['password'].value)
+        .set('grant_type', 'password');
+      this.AppService.login(params.toString()).subscribe(data => {
         if(data.access_token){
           localStorage.setItem("token", JSON.stringify(data.access_token));
         }
