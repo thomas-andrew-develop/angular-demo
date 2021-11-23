@@ -10,13 +10,14 @@ export class AppService {
   URL_TODO = 'https://jsonplaceholder.typicode.com';
   httOption = {
     headers: new HttpHeaders({
-      'Access-Control-Allow-Origin':'*',
+      //'Access-Control-Allow-Origin':'*',
       'Accept': 'application/json',
-      'Content-Type': 'application/json;charset=UTF-8',
-      "Access-Control-Allow-Methods": "GET,HEAD,OPTIONS,POST,PUT",
-      "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept, x - client - key, x - client - token, x - client - secret, Authorization "
+      'Content-Type': 'application/x-www-form-urlencoded',
+      //"Access-Control-Allow-Methods": "GET,HEAD,OPTIONS,POST,PUT",
+      //"Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept, x - client - key, x - client - token, x - client - secret, Authorization "
     })
   };
+
 
 
   constructor(private httpClient: HttpClient) { }
