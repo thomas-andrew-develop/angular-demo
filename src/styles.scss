@@ -34,3 +34,11 @@ img{
 .page-padding{
   padding: 50px 0;
 }
+
+.wrap-main{
+  min-height: -webkit-calc(100vh - 250px);
+  min-height: -moz-calc(100vh - 250px);
+  min-height: calc(100vh - 250px);
+  display: inline-block;
+  width: 100%;
+}

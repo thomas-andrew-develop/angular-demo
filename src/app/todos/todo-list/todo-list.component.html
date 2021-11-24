@@ -1,0 +1,14 @@
+<table class="table text-center">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">First</th>
+      <th scope="col">Last</th>
+      <th scope="col">Email</th>
+      <th scope="col">Avatar</th>
+    </tr>
+  </thead>
+  <tbody >
+    <tr app-todo-item *ngFor="let todo of todos ; let i = index" [todo]="todo"></tr>
+  </tbody>
+</table>
