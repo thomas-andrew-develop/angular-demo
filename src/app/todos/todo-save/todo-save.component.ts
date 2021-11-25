@@ -1,7 +1,5 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormControl, FormGroup, Validators, AbstractControl } from '@angular/forms';
-import { TodosService } from '../../Services/todos.service';
-// import {HttpParams} from "@angular/common/http";
 @Component({
   selector: 'app-todo-save',
   templateUrl: './todo-save.component.html',

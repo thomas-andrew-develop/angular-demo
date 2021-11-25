@@ -11,6 +11,6 @@
     </tr>
   </thead>
   <tbody >
-    <tr app-todo-item *ngFor="let todo of todos ; let i = index" [todo]="todo" [index] = "i"></tr>
+    <tr app-todo-item *ngFor="let todo of todos ; let i = index" [todo]="todo" [index] = "i" (deleteTodo)="onDelete($event)"></tr>
   </tbody>
 </table>

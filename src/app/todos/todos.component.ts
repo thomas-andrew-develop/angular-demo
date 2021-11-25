@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { TodosService } from '../Services/todos.service';
-import {HttpParams} from "@angular/common/http";
 @Component({
   selector: 'app-todos',
   templateUrl: './todos.component.html',
@@ -9,7 +8,7 @@ import {HttpParams} from "@angular/common/http";
 export class TodosComponent implements OnInit {
   todos = [];
   loading = false;
-  constructor(private TodosService : TodosService) { }
+  constructor(private TodosService : TodosService, ) { }
 
   ngOnInit(): void {
     this.TodosService.fetchUsers().subscribe(data => {
@@ -20,8 +19,13 @@ export class TodosComponent implements OnInit {
 
   saveTodo(dataForm: {}){
     this.TodosService.addUser(dataForm).subscribe(data => {
-      this.loading = false;
+      this.ngOnInit();
     });
   }
 
+  deleteTodo(id: any){
+    this.TodosService.deletedUser(id).subscribe(data => {
+      this.ngOnInit();
+    });
+  }
 }

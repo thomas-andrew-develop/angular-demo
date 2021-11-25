@@ -17,4 +17,9 @@ export class TodosService {
     const apiAddUser = `${this.API_URL_USER}/users`;
     return this.httpClient.post(apiAddUser, payload);
   }
+
+  deletedUser(id: any): Observable<any>{
+    const apiAddUser = `${this.API_URL_USER}/users/`+id;
+    return this.httpClient.delete(apiAddUser, id);
+  }
 }
