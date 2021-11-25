@@ -1,10 +1,10 @@
-<!-- <th scope="row">{{todo.id}}</th>
+<td scope="row">{{index + 1}}</td>
 <td>{{todo.first_name}}</td>
 <td>{{todo.last_name}}</td>
 <td>{{todo.email}}</td>
-<td><img [src]="todo.avatar" /></td> -->
-<th scope="row">232423</th>
-<td>24234</td>
-<td>23423</td>
-<td>23423</td>
-<td>242</td>
+<td><img [src]="todo.avatar" /></td>
+<td>{{todo.status}}</td>
+<td>
+  <button class="btn btn-danger me-3" type="button">Delete</button>
+  <button class="btn btn-warning" type="button">Edit</button>
+</td>

@@ -6,12 +6,12 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./todo-item.component.scss']
 })
 export class TodoItemComponent implements OnInit {
-  @Input() todo = [];
-  
+  @Input() todo  =  {id: String, email: String, first_name: String, last_name: String, avatar: String, status: Boolean};
+  @Input() index : number = 0;
   constructor() { }
 
   ngOnInit(): void {
-    console.log(this.todo);
+    
   }
 
 }

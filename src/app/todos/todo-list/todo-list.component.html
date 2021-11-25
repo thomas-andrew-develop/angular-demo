@@ -6,9 +6,11 @@
       <th scope="col">Last</th>
       <th scope="col">Email</th>
       <th scope="col">Avatar</th>
+      <th scope="col">Status</th>
+      <th scope="col">Action</th>
     </tr>
   </thead>
   <tbody >
-    <tr app-todo-item *ngFor="let todo of todos ; let i = index" [todo]="todo"></tr>
+    <tr app-todo-item *ngFor="let todo of todos ; let i = index" [todo]="todo" [index] = "i"></tr>
   </tbody>
 </table>
