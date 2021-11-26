@@ -1,5 +1,5 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { FormControl, FormGroup, Validators, AbstractControl } from '@angular/forms';
+import {FormControl, FormGroup, Validators, AbstractControl, FormGroupDirective} from '@angular/forms';
 @Component({
   selector: 'app-todo-save',
   templateUrl: './todo-save.component.html',
@@ -25,14 +25,16 @@ export class TodoSaveComponent implements OnInit {
     return this.formTodo.controls;
   }
 
-  onSubmit(): void {
-    this.submitted = true;
-    
-    
+  onSubmit(thisForm: FormGroupDirective): void {
+    //this.submitted = true;
+
+    console.log(this.formTodo)
     if(this.formTodo.valid){
       const params = this.formTodo.value;
       this.dataAddTodo.emit(params);
+      thisForm.resetForm()
       this.formTodo.reset();
+      this.formTodo.controls['status'].setValue('inactive');
     }
   }
 

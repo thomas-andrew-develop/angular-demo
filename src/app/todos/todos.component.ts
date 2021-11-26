@@ -11,6 +11,10 @@ export class TodosComponent implements OnInit {
   constructor(private TodosService : TodosService, ) { }
 
   ngOnInit(): void {
+    this.fetchData()
+  }
+
+  fetchData(){
     this.TodosService.fetchUsers().subscribe(data => {
       this.todos = data;
       this.loading = true;
@@ -19,13 +23,13 @@ export class TodosComponent implements OnInit {
 
   saveTodo(dataForm: {}){
     this.TodosService.addUser(dataForm).subscribe(data => {
-      this.ngOnInit();
+      this.fetchData()
     });
   }
 
   deleteTodo(id: any){
     this.TodosService.deletedUser(id).subscribe(data => {
-      this.ngOnInit();
+      this.fetchData()
     });
   }
 }
