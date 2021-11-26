@@ -32,4 +32,10 @@ export class TodosComponent implements OnInit {
       this.fetchData()
     });
   }
+
+  updateTodo(item: any){
+    this.TodosService.updateUser(item).subscribe(data => {
+      this.fetchData()
+    });
+  }
 }

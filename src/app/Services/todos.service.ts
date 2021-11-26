@@ -9,17 +9,19 @@ export class TodosService {
   constructor(private httpClient: HttpClient) { }
 
   fetchUsers(): Observable<any>{
-    const urlUser = `${this.API_URL_USER}/users`;
-    return this.httpClient.get(urlUser);
+    
+    return this.httpClient.get(this.API_URL_USER+'/users');
   }
 
   addUser(payload: any): Observable<any>{
-    const apiAddUser = `${this.API_URL_USER}/users`;
-    return this.httpClient.post(apiAddUser, payload);
+    return this.httpClient.post(this.API_URL_USER+'/users', payload);
   }
 
   deletedUser(id: any): Observable<any>{
-    const apiAddUser = `${this.API_URL_USER}/users/`+id;
-    return this.httpClient.delete(apiAddUser, id);
+    return this.httpClient.delete(this.API_URL_USER+'/users/'+id, id);
+  }
+
+  updateUser(payload: any): Observable<any>{
+    return this.httpClient.put(this.API_URL_USER+'/users/'+payload.id, payload);
   }
 }

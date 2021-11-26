@@ -5,7 +5,11 @@
         <app-todo-save (dataAddTodo)="saveTodo($event)"></app-todo-save>
       </div>
       <div class="col-9">
-        <app-todo-list [todos]='todos' (deleteTodo)="deleteTodo($event)"></app-todo-list>
+        <app-todo-list 
+          [todos]='todos' 
+          (deleteTodo)="deleteTodo($event)"
+          (changeStatusTodo)="updateTodo($event)"
+        ></app-todo-list>
       </div>
     </div>
   </div>

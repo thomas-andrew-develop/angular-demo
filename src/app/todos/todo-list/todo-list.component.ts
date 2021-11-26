@@ -8,6 +8,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 export class TodoListComponent implements OnInit {
   @Input() todos = [];
   @Output() deleteTodo: EventEmitter<any> = new EventEmitter();
+  @Output() changeStatusTodo: EventEmitter<any> = new EventEmitter();
   constructor() { }
 
   ngOnInit(): void {
@@ -15,5 +16,8 @@ export class TodoListComponent implements OnInit {
   }
   onDelete(id: any){
     this.deleteTodo.emit(id);
+  }
+  onChangeStatus(item: any){
+    this.changeStatusTodo.emit(item);
   }
 }

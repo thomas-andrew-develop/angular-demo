@@ -13,7 +13,6 @@ export class TodoSaveComponent implements OnInit {
     avatar: new FormControl('', [Validators.required]),
     status: new FormControl('inactive', [Validators.required])
   });
-  submitted = false;
   @Output() dataAddTodo: EventEmitter<any> = new EventEmitter();
 
   constructor() { }
@@ -26,9 +25,7 @@ export class TodoSaveComponent implements OnInit {
   }
 
   onSubmit(thisForm: FormGroupDirective): void {
-    //this.submitted = true;
 
-    console.log(this.formTodo)
     if(this.formTodo.valid){
       const params = this.formTodo.value;
       this.dataAddTodo.emit(params);
