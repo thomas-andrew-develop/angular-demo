@@ -14,6 +14,7 @@ export class TodoSaveComponent implements OnInit {
     status: new FormControl('inactive', [Validators.required])
   });
   @Output() dataAddTodo: EventEmitter<any> = new EventEmitter();
+  @Output() dataUpdateTodo: EventEmitter<any> = new EventEmitter();
   @Input() todoItem: any;
 
   constructor() { }
@@ -36,7 +37,14 @@ export class TodoSaveComponent implements OnInit {
 
     if(this.formTodo.valid){
       const params = this.formTodo.value;
-      this.dataAddTodo.emit(params);
+      
+      if(this.todoItem.id.length){
+        params.id = this.todoItem.id;
+        this.dataUpdateTodo.emit(params);
+      }else{
+        this.dataAddTodo.emit(params);
+      }
+      
       thisForm.resetForm()
       this.formTodo.reset();
       this.formTodo.controls['status'].setValue('inactive');

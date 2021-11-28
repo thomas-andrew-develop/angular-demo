@@ -4,6 +4,7 @@
       <div class="col-3">
         <app-todo-save 
           (dataAddTodo)="saveTodo($event)"
+          (dataUpdateTodo)="updateTodo($event)"
           [todoItem]='todoItem'
         ></app-todo-save>
       </div>
