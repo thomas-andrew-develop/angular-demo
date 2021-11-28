@@ -9,7 +9,7 @@ export class TodosComponent implements OnInit {
   todos = [];
   loading = false;
   todoItem = {
-    first_name: 'adasda',
+    first_name: '',
     last_name: '',
     email: '',
     avatar: '',
