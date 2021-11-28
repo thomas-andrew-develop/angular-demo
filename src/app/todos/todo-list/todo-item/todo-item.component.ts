@@ -8,10 +8,10 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 export class TodoItemComponent implements OnInit {
   @Input() todo  =  {id: String, email: String, first_name: String, last_name: String, avatar: String, status: Boolean};
   @Input() index : number = 0;
-  status : String = '';
 
   @Output() deleteTodo: EventEmitter<any> = new EventEmitter();
   @Output() changeStatusTodo: EventEmitter<any> = new EventEmitter();
+  @Output() editTodo: EventEmitter<any> = new EventEmitter();
 
   constructor() { }
 
@@ -32,4 +32,7 @@ export class TodoItemComponent implements OnInit {
     this.changeStatusTodo.emit(item);
   }
 
+  onEdit(item: any){
+    this.editTodo.emit(item);
+  }
 }

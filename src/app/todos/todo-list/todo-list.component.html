@@ -17,6 +17,7 @@
       [todo]="todo" 
       [index] = "i" 
       (deleteTodo)="onDelete($event)"
+      (editTodo)="onUpdateTodo($event)"
       (changeStatusTodo)="onChangeStatus($event)"
     ></tr>
   </tbody>

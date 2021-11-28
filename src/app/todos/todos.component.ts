@@ -8,7 +8,14 @@ import { TodosService } from '../Services/todos.service';
 export class TodosComponent implements OnInit {
   todos = [];
   loading = false;
-  constructor(private TodosService : TodosService, ) { }
+  todoItem = {
+    first_name: 'adasda',
+    last_name: '',
+    email: '',
+    avatar: '',
+    status: 'inactive'
+  };
+  constructor(private TodosService : TodosService) { }
 
   ngOnInit(): void {
     this.fetchData()
@@ -33,9 +40,14 @@ export class TodosComponent implements OnInit {
     });
   }
 
+  getTodoDetail(item: any){
+    this.todoItem = item;
+  }
+
   updateTodo(item: any){
     this.TodosService.updateUser(item).subscribe(data => {
       this.fetchData()
     });
   }
+
 }
