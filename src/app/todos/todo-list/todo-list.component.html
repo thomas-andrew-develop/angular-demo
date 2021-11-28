@@ -11,6 +11,21 @@
     </tr>
   </thead>
   <tbody >
+    <tr>
+      <td></td>
+      <td><input class="form-control" type="text" [ngModel]="search" (ngModelChange)="onSearch($event)"/></td>
+      <td><input class="form-control" type="text" [ngModel]="search" (ngModelChange)="onSearch($event)"/></td>
+      <td><input class="form-control" type="text" [ngModel]="search" (ngModelChange)="onSearch($event)"/></td>
+      <td></td>
+      <td>
+        <select class="form-control" [ngModel]="search" (ngModelChange)="onSearch($event)">
+          <option value="">All</option>
+          <option value="inactive">Inactive</option>
+          <option value="active">Active</option>
+        </select>
+      </td>
+      <td></td>
+    </tr>
     <tr 
       app-todo-item 
       *ngFor="let todo of todos ; let i = index" 

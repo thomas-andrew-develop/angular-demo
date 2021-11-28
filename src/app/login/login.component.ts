@@ -21,9 +21,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     const payload = {};
-    this.AppService.fetchTodo().subscribe(data => {
-        console.log(data)
-      });
+    this.AppService.fetchTodo().subscribe();
   }
 
   get f(): { [key: string]: AbstractControl } {

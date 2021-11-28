@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Pipe } from '@angular/core';
 import { TodosService } from '../Services/todos.service';
 @Component({
   selector: 'app-todos',
@@ -7,7 +7,6 @@ import { TodosService } from '../Services/todos.service';
 })
 export class TodosComponent implements OnInit {
   todos = [];
-  loading = false;
   todoItem = {
     id: '',
     first_name: '',
@@ -25,7 +24,6 @@ export class TodosComponent implements OnInit {
   fetchData(){
     this.TodosService.fetchUsers().subscribe(data => {
       this.todos = data;
-      this.loading = true;
     });
   }
 
@@ -41,13 +39,22 @@ export class TodosComponent implements OnInit {
     });
   }
 
-  getTodoDetail(item: any){
-    this.todoItem = item;
-  }
-
   updateTodo(item: any){
     this.TodosService.updateUser(item).subscribe(data => {
       this.fetchData()
+    });
+  }
+
+  getTodoDetail(item: any){
+    this.todoItem = item;
+  }
+  
+  
+  searchTodo(value: any){
+    this.TodosService.fetchUsers().subscribe(data => {
+      this.todos = data.filter((item: any) => {
+        return item.status.toLowerCase().indexOf(value) !== -1
+      });
     });
   }
 
