@@ -6,7 +6,7 @@
 <td>
   <div (click)="onChangeStatus(todo)">
     <!-- <span [ngClass]="todo.status === 'active' ?  'statu1' : 'status2'">{{todo.status}}</span> -->
-    <span [ngClass]="{'status1': 'active', 'status2':'inactive'}">{{todo.status}}</span>
+    <span [ngClass]="{'status1': todo.status === 'active', 'status2': todo.status === 'inactive'}">{{todo.status}}</span>
   </div>
   
 </td>
