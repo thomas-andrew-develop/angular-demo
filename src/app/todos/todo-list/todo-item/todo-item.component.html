@@ -4,7 +4,10 @@
 <td>{{todo.email}}</td>
 <td><img [src]="todo.avatar" /></td>
 <td>
-  <span (click)="onChangeStatus(todo)">{{todo.status}}</span>
+  <div (click)="onChangeStatus(todo)">
+    <span [ngClass]="todo.status === 'active' ?  'statu1' : 'status2'">{{todo.status}}</span>
+  </div>
+  
 </td>
 <td>
   <div class="d-flex">
