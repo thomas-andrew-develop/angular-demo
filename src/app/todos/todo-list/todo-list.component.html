@@ -13,12 +13,12 @@
   <tbody >
     <tr>
       <td></td>
-      <td><input class="form-control" type="text" [ngModel]="search" (ngModelChange)="onSearch($event)"/></td>
-      <td><input class="form-control" type="text" [ngModel]="search" (ngModelChange)="onSearch($event)"/></td>
-      <td><input class="form-control" type="text" [ngModel]="search" (ngModelChange)="onSearch($event)"/></td>
+      <td><input class="form-control" type="text" [ngModel]="search" (ngModelChange)="onSearch($event, 'first_name')"/></td>
+      <td><input class="form-control" type="text" [ngModel]="search" (ngModelChange)="onSearch($event, 'last_name')"/></td>
+      <td><input class="form-control" type="text" [ngModel]="search" (ngModelChange)="onSearch($event, 'email')"/></td>
       <td></td>
       <td>
-        <select class="form-control" [ngModel]="search" (ngModelChange)="onSearch($event)">
+        <select class="form-control" [ngModel]="search" (ngModelChange)="onSearch($event, 'status')">
           <option value="">All</option>
           <option value="inactive">Inactive</option>
           <option value="active">Active</option>

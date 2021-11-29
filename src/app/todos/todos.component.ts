@@ -53,7 +53,20 @@ export class TodosComponent implements OnInit {
   searchTodo(value: any){
     this.TodosService.fetchUsers().subscribe(data => {
       this.todos = data.filter((item: any) => {
-        return item.status.toLowerCase().indexOf(value) !== -1
+        switch (value.name) {
+          case "first_name":
+            return item.first_name.toLowerCase().indexOf(value.value) !== -1
+            break;
+          case "last_name":
+            return item.last_name.toLowerCase().indexOf(value.value) !== -1
+            break;
+          case "email":
+            return item.email.toLowerCase().indexOf(value.value) !== -1
+            break;
+          default:
+            return item.status.toLowerCase().indexOf(value.value) !== -1
+            break;
+        }
       });
     });
   }

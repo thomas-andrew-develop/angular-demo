@@ -12,7 +12,6 @@ export class TodoListComponent implements OnInit {
   @Output() editTodo: EventEmitter<any> = new EventEmitter();
   @Output() searchTodo: EventEmitter<any> = new EventEmitter();
 
-  first_name = '';
   search = '';
   constructor() { }
 
@@ -28,7 +27,10 @@ export class TodoListComponent implements OnInit {
   onUpdateTodo(item: any){
     this.editTodo.emit(item);
   }
-  onSearch(value: any){
-    this.searchTodo.emit(value);
+  onSearch(value: any, name: any){
+    this.searchTodo.emit({
+      value: value.toLowerCase(),
+      name
+    });
   }
 }
