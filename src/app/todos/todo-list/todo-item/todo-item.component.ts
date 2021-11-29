@@ -20,7 +20,9 @@ export class TodoItemComponent implements OnInit {
   }
 
   onDelete(id: any){
-    this.deleteTodo.emit(id);
+    if(confirm("Are you sure to delete ")) {
+      this.deleteTodo.emit(id);
+    }
   }
 
   onChangeStatus(item: any){

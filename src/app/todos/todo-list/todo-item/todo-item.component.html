@@ -5,7 +5,7 @@
 <td><img [src]="todo.avatar" /></td>
 <td>
   <div (click)="onChangeStatus(todo)">
-    <span [ngClass]="todo.status === 'active' ?  'badge bg-primary' : 'badge bg-dark'">{{todo.status}}</span>
+    <span [ngClass]="todo.status === 'active' ?  'badge bg-primary' : 'badge bg-dark'">{{todo.status | uppercase}}</span>
     <!-- <span [ngClass]="{'badge bg-primary': todo.status === 'active', 'badge bg-dark': todo.status === 'inactive'}">{{todo.status}}</span> -->
   </div>
   
