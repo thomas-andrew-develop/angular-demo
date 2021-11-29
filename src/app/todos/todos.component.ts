@@ -15,6 +15,7 @@ export class TodosComponent implements OnInit {
     avatar: '',
     status: 'inactive'
   };
+  
   constructor(private TodosService : TodosService) { }
 
   ngOnInit(): void {
