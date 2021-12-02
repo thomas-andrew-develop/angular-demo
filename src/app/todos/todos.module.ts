@@ -9,6 +9,7 @@ import { TodoSaveComponent } from './todo-save/todo-save.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TodoSearchComponent } from './todo-search/todo-search.component';
 import { TodoSortComponent } from './todo-sort/todo-sort.component';
+import { ShortPipe } from './todo-list/todo-item/short.pipe';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { TodoSortComponent } from './todo-sort/todo-sort.component';
     TodoSaveComponent,
     TodoSearchComponent,
     TodoSortComponent,
+    ShortPipe,
   ],
   imports: [
     CommonModule,

@@ -17,6 +17,8 @@ export class LoginComponent implements OnInit {
 
   submitted = false;
 
+  errorMessage = '';
+
   constructor(private AppService: AppService) { }
 
   ngOnInit(): void {
@@ -39,7 +41,7 @@ export class LoginComponent implements OnInit {
         if(data.access_token){
           localStorage.setItem("token", JSON.stringify(data.access_token));
         }
-      });
+      },error => this.errorMessage = error.error.error_description);
     }
   }
 

@@ -1,6 +1,6 @@
 <td scope="row">{{index + 1}}</td>
-<td>{{todo.first_name}}</td>
-<td>{{todo.last_name}}</td>
+<td>{{todo.first_name | short: 4}}</td>
+<td><div appHighlight>{{todo.last_name}}</div></td>
 <td>{{todo.email}}</td>
 <td><img [src]="todo.avatar" /></td>
 <td>

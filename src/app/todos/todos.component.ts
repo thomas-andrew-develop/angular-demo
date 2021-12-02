@@ -52,6 +52,7 @@ export class TodosComponent implements OnInit {
   
   
   searchTodo(value: any){
+    console.log(value);
     this.TodosService.fetchUsers().subscribe(data => {
       this.todos = data.filter((item: any) => {
         switch (value.name) {
@@ -65,7 +66,7 @@ export class TodosComponent implements OnInit {
             return item.email.toLowerCase().indexOf(value.value) !== -1
             break;
           default:
-            return item.status.toLowerCase().indexOf(value.value) !== -1
+            return item.status.toLowerCase().search(value.value) !== -1
             break;
         }
       });

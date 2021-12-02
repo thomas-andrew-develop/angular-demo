@@ -31,6 +31,8 @@
         </div>
       </div>
 
+      <div *ngIf="errorMessage.length > 0" class="text-danger mb-3">{{errorMessage}}</div>
+
       <input type="submit" class="btn btn-primary"/>
     </form>
   </div>
