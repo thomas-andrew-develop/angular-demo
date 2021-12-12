@@ -1,0 +1,23 @@
+<h3 class="title">Latest posts</h3>
+<div *ngFor="let blog of latestBlogs; let i = index" class="item mb-20">
+  <nz-space nzAlign="center" [nzSize]="size">
+    <div *nzSpaceItem class="image">
+      <img alt="blog.title" [src]="blog.image" />
+    </div>
+    <div *nzSpaceItem class="info">
+      <div class="blog-category">
+        <nz-space nzAlign="center" [nzSplit]="spaceSplit">
+          <ng-template #spaceSplit>
+            <span>, </span>
+          </ng-template>
+          <ng-container  *ngFor="let blogCategory of blog.category">
+            <span *nzSpaceItem>{{getCategory(blogCategory) | uppercase}}</span>
+          </ng-container>
+        </nz-space> 
+      </div>
+      <div class="title mb-10">
+        <a>{{blog.title}}</a>
+      </div>
+    </div>
+  </nz-space>
+</div>

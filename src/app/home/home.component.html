@@ -1,1 +1,21 @@
-<h1>This is home</h1>
+<app-header1></app-header1>
+<main>
+  <app-banner></app-banner>
+
+  <div class="padding-main">
+    <div class="container">
+      <div class="mb-60">
+        <app-categories [categoriesList]="categoriesList"></app-categories>
+      </div>
+
+      <div nz-row [nzGutter]="48">
+        <div nz-col nzMd="18">
+          <app-home-list-blog [blogs]="blogs"></app-home-list-blog>
+        </div>
+        <div nz-col nzMd="6">
+          <app-home-latest-post [latestBlogs]='latestBlogs'></app-home-latest-post>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>

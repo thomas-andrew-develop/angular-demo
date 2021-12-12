@@ -43,6 +43,47 @@ img{
   width: 100%;
 }
 
+.padding-main{
+  padding: 60px 0;
+}
+
 .cursor-pointer{
   cursor: pointer;
+}
+
+$spaces: 0, 2, 4, 6, 8, 10, 12, 14, 16, 20, 26, 30, 40, 60;
+
+@each $space in $spaces {
+  .mb-#{$space} {
+    margin-bottom: #{$space}px;
+  }
+  .mt-#{$space} {
+    margin-top: #{$space}px;
+  }
+  .mr-#{$space} {
+    margin-right: #{$space}px;
+  }
+  .ml-#{$space} {
+    margin-left: #{$space}px;
+  }
+  .pb-#{$space} {
+    padding-bottom: #{$space}px;
+  }
+  .pt-#{$space} {
+    padding-top: #{$space}px;
+  }
+  .pr-#{$space} {
+    padding-right: #{$space}px;
+  }
+  .pl-#{$space} {
+    padding-left: #{$space}px;
+  }
+}
+
+@media (min-width: 1260px){
+  .container {
+      max-width: 1200px!important;
+      min-width: 1200px!important;
+      width: 1200px!important;
+  }
 }

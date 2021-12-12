@@ -3,16 +3,34 @@ import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HomeRoutingModule } from './home-routing.module';
 import { HomeComponent } from './home.component';
-
-
+import { Header1Component } from '../Layout/header/header1/header1.component';
+import { NzGridModule } from 'ng-zorro-antd/grid';
+import { BannerComponent } from './components/banner/banner.component';
+import { CategoriesComponent } from './components/categories/categories.component';
+import { NzSpaceModule } from 'ng-zorro-antd/space';
+import { HomeListBlogComponent } from './components/home-list-blog/home-list-blog.component';
+import { NzCardModule } from 'ng-zorro-antd/card';
+import { NgxMasonryModule } from 'ngx-masonry';
+import { HomeLatestPostComponent } from './components/home-latest-post/home-latest-post.component';
+import { NzDividerModule } from 'ng-zorro-antd/divider';
 @NgModule({
   declarations: [
-    HomeComponent
+    HomeComponent,
+    Header1Component,
+    BannerComponent,
+    CategoriesComponent,
+    HomeListBlogComponent,
+    HomeLatestPostComponent
   ],
   imports: [
     CommonModule,
     HomeRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NzGridModule,
+    NzSpaceModule,
+    NzCardModule,
+    NgxMasonryModule,
+    NzDividerModule
   ]
 })
 export class HomeModule { }

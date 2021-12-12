@@ -1,0 +1,16 @@
+.banner-home{
+  background: url(../../../../assets/images/Blog_title_image.jpg) center no-repeat;
+  -webkit-background-size: cover;
+     -moz-background-size: cover;
+       -o-background-size: cover;
+          background-size: cover;
+  padding-top: 100px;
+  .banner-title{
+    padding: 130px 0;
+    font-size: 48px;
+    text-align: center;
+    margin-bottom: 0;
+    color: #fff;
+    font-weight: bold;
+  }
+}
