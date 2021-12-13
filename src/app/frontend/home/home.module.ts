@@ -3,7 +3,8 @@ import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HomeRoutingModule } from './home-routing.module';
 import { HomeComponent } from './home.component';
-import { Header1Component } from '../Layout/header/header1/header1.component';
+import { HeaderComponent } from '../Layout/header/header.component';
+import { FooterComponent } from '../Layout/footer/footer.component';
 import { NzGridModule } from 'ng-zorro-antd/grid';
 import { BannerComponent } from './components/banner/banner.component';
 import { CategoriesComponent } from './components/categories/categories.component';
@@ -16,7 +17,8 @@ import { NzDividerModule } from 'ng-zorro-antd/divider';
 @NgModule({
   declarations: [
     HomeComponent,
-    Header1Component,
+    HeaderComponent,
+    FooterComponent,
     BannerComponent,
     CategoriesComponent,
     HomeListBlogComponent,
