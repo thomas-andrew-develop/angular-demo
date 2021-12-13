@@ -52,7 +52,6 @@ export class TodosComponent implements OnInit {
   
   
   searchTodo(value: any){
-    console.log(value);
     this.TodosService.fetchUsers().subscribe(data => {
       this.todos = data.filter((item: any) => {
         switch (value.name) {

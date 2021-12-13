@@ -3,15 +3,18 @@ import { CommonModule } from '@angular/common';
 
 import { FrontendRoutingModule } from './frontend-routing.module';
 import { FrontendComponent } from './frontend.component';
-
+import { HeaderComponent } from './Layout/header/header.component';
+import { FooterComponent } from './Layout/footer/footer.component';
 
 @NgModule({
   declarations: [
-    FrontendComponent
+    FrontendComponent,
+    HeaderComponent,
+    FooterComponent,
   ],
   imports: [
     CommonModule,
-    FrontendRoutingModule
+    FrontendRoutingModule,
   ]
 })
 export class FrontendModule { }
