@@ -9,21 +9,24 @@ import { en_US } from 'ng-zorro-antd/i18n';
 import { registerLocaleData } from '@angular/common';
 import en from '@angular/common/locales/en';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { AdminComponent } from './admin/admin.component';
-
+import { NzIconModule } from 'ng-zorro-antd/icon';
+import { FrontendModule } from './frontend/frontend.module'
+import { AdminModule } from './admin/admin.module'
 
 registerLocaleData(en);
 @NgModule({
   declarations: [
     AppComponent,
     NotFoundComponent,
-    AdminComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    FrontendModule,
+    AdminModule,
+    NzIconModule
   ],
   providers: [{ provide: NZ_I18N, useValue: en_US }],
   bootstrap: [AppComponent]
