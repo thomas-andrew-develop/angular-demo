@@ -1,0 +1,20 @@
+<nz-table #basicTable [nzData]="categories">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Name</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let category of categories; let i = index">
+      <td>{{ i + 1}}</td>
+      <td>{{ category.name }}</td>
+      <td>
+        <a>Edit</a>
+        <nz-divider nzType="vertical"></nz-divider>
+        <a>Delete</a>
+      </td>
+    </tr>
+  </tbody>
+</nz-table>

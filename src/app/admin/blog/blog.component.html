@@ -1,0 +1,22 @@
+<nz-table #basicTable [nzData]="blogs">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Name</th>
+      <th>Excerpt</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let blog of blogs; let i = index">
+      <td>{{ i + 1}}</td>
+      <td>{{ blog.title }}</td>
+      <td>{{ blog.excerpt }}</td>
+      <td>
+        <a>Edit</a>
+        <nz-divider nzType="vertical"></nz-divider>
+        <a>Delete</a>
+      </td>
+    </tr>
+  </tbody>
+</nz-table>

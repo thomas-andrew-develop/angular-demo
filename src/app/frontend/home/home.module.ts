@@ -12,12 +12,14 @@ import { NzCardModule } from 'ng-zorro-antd/card';
 import { NgxMasonryModule } from 'ngx-masonry';
 import { HomeLatestPostComponent } from './components/home-latest-post/home-latest-post.component';
 import { NzDividerModule } from 'ng-zorro-antd/divider';
+import { BannerModule } from '../common/banner/banner.module'
+
 @NgModule({
   declarations: [
     HomeComponent,
     CategoriesComponent,
     HomeListBlogComponent,
-    HomeLatestPostComponent
+    HomeLatestPostComponent,
   ],
   imports: [
     CommonModule,
@@ -27,7 +29,8 @@ import { NzDividerModule } from 'ng-zorro-antd/divider';
     NzSpaceModule,
     NzCardModule,
     NgxMasonryModule,
-    NzDividerModule
+    NzDividerModule,
+    BannerModule
   ]
 })
 export class HomeModule { }
