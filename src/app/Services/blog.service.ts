@@ -12,8 +12,32 @@ export class BlogService {
   fetchBlogs(): Observable<any>{
     return this.httpClient.get(this.API_URL+'/blogs');
   }
+
+  addBlogs(payload: any): Observable<any>{
+    return this.httpClient.post(this.API_URL+'/blogs', payload);
+  }
+
+  deleteBlogs(id: any): Observable<any>{
+    return this.httpClient.delete(this.API_URL+'/blogs/'+id, id);
+  }
+
+  updateBlogs(payload: any): Observable<any>{
+    return this.httpClient.put(this.API_URL+'/blogs/'+payload.id, payload);
+  }
   
   fetchCategories(): Observable<any>{
     return this.httpClient.get(this.API_URL+'/categories');
+  }
+
+  addCategories(payload: any): Observable<any>{
+    return this.httpClient.post(this.API_URL+'/categories', payload);
+  }
+
+  deleteCategories(id: any): Observable<any>{
+    return this.httpClient.delete(this.API_URL+'/categories/'+id, id);
+  }
+
+  updateCategories(payload: any): Observable<any>{
+    return this.httpClient.put(this.API_URL+'/categories/'+payload.id, payload);
   }
 }

@@ -1,13 +1,21 @@
-<form nz-form [formGroup]="validateForm" (ngSubmit)="submitForm()">
-  <nz-form-item>
-    <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="category">Category Name</nz-form-label>
-    <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="The input is not valid!">
-      <input nz-input formControlName="category" id="category" />
-    </nz-form-control>
-  </nz-form-item>
-  <nz-form-item nz-row class="register-area">
-    <nz-form-control [nzSpan]="14" [nzOffset]="6">
-      <button nz-button nzType="primary">Register</button>
-    </nz-form-control>
-  </nz-form-item>
+<form novalidate [formGroup]="formCategories" (ngSubmit)="submitForm(form)" #form='ngForm'>
+  <nz-space nzDirection="vertical" [nzSize]="40">
+    <div *nzSpaceItem>
+      <label>Name</label>
+      <input nz-input id="name" formControlName="name" (input)="createSlug()" required />
+      <div *ngIf="formCategories.controls['name'].invalid && (formCategories.controls['name'].dirty || formCategories.controls['name'].touched || form.submitted)">
+        <div class="text-danger">Name is required</div>
+      </div>
+    </div>
+    <div *nzSpaceItem>
+      <label>Slug</label>
+      <input nz-input id="slug" formControlName="slug" />
+      <div *ngIf="formCategories.controls['slug'].invalid && (formCategories.controls['slug'].dirty || formCategories.controls['slug'].touched || form.submitted)">
+        <div class="text-danger">Slug is required</div>
+      </div>
+    </div>
+    <div *nzSpaceItem>
+      <button nz-button nzType="primary" type="submit">Save</button>
+    </div>
+  </nz-space>
 </form>

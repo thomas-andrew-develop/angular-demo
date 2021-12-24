@@ -9,20 +9,28 @@ import { NzInputModule } from 'ng-zorro-antd/input';
 import { NzFormModule } from 'ng-zorro-antd/form';
 import { NzLayoutModule } from 'ng-zorro-antd/layout';
 import { NzGridModule } from 'ng-zorro-antd/grid';
-
+import { SaveCategoriesComponent } from './save/save.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NzButtonModule } from 'ng-zorro-antd/button';
+import { NzSpaceModule } from 'ng-zorro-antd/space';
 @NgModule({
   declarations: [
-    CategoriesAdminComponent
+    CategoriesAdminComponent,
+    SaveCategoriesComponent
   ],
   imports: [
     CommonModule,
     CategoriesAdminRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
     NzTableModule,
     NzDividerModule,
     NzInputModule,
     NzFormModule,
     NzLayoutModule,
-    NzGridModule
+    NzGridModule,
+    NzButtonModule,
+    NzSpaceModule
   ]
 })
 export class CategoriesAdminModule { }

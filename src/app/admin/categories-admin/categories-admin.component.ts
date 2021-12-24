@@ -8,6 +8,11 @@ import { BlogService } from '../../Services/blog.service';
 })
 export class CategoriesAdminComponent implements OnInit {
   categories: any;
+  categoryDetail = {
+    id: '',
+    name: '',
+    slug: ''
+  };
 
   constructor(private blogService: BlogService) { }
 
@@ -18,6 +23,28 @@ export class CategoriesAdminComponent implements OnInit {
   fetchData(){
     this.blogService.fetchCategories().subscribe(data => {
       this.categories = data;
+    });
+  }
+
+  saveCategories(dataForm: {}){
+    this.blogService.addCategories(dataForm).subscribe(data => {
+      this.fetchData()
+    });
+  }
+
+  deleteCategories(id: any){
+    this.blogService.deleteCategories(id).subscribe(data => {
+      this.fetchData()
+    });
+  }
+
+  getCategoryDetail(item: any){
+    this.categoryDetail = item;
+  }
+
+  updateCategories(item: any){
+    this.blogService.updateCategories(item).subscribe(data => {
+      this.fetchData()
     });
   }
 

@@ -1,20 +1,30 @@
-<nz-table #basicTable [nzData]="categories">
-  <thead>
-    <tr>
-      <th>#</th>
-      <th>Name</th>
-      <th>Action</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let category of categories; let i = index">
-      <td>{{ i + 1}}</td>
-      <td>{{ category.name }}</td>
-      <td>
-        <a>Edit</a>
-        <nz-divider nzType="vertical"></nz-divider>
-        <a>Delete</a>
-      </td>
-    </tr>
-  </tbody>
-</nz-table>
+<div nz-row [nzGutter]="40">
+  <div nz-col [nzSm]="6" [nzXs]="24">
+    <app-save-categories
+      (addCategory)="saveCategories($event)"
+      [categoryDetail]="categoryDetail"
+    ></app-save-categories>
+  </div>
+  <div nz-col [nzSm]="18" [nzXs]="24">
+    <nz-table #basicTable [nzData]="categories">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Name</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let category of categories; let i = index">
+          <td>{{ i + 1}}</td>
+          <td>{{ category.name }}</td>
+          <td>
+            <a (click)="getCategoryDetail(category)">Edit</a>
+            <nz-divider nzType="vertical"></nz-divider>
+            <a (click)="deleteCategories(category.id)">Delete</a>
+          </td>
+        </tr>
+      </tbody>
+    </nz-table>
+  </div>
+</div>

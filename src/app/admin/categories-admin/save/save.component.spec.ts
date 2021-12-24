@@ -2,7 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { SaveCategoriesComponent } from './save.component';
 
-describe('SaveComponent', () => {
+describe('SaveCategoriesComponent', () => {
   let component: SaveCategoriesComponent;
   let fixture: ComponentFixture<SaveCategoriesComponent>;
 
