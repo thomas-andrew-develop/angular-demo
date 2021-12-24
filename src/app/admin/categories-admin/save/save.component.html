@@ -1,21 +1,19 @@
 <form novalidate [formGroup]="formCategories" (ngSubmit)="submitForm(form)" #form='ngForm'>
-  <nz-space nzDirection="vertical" [nzSize]="40">
-    <div *nzSpaceItem>
-      <label>Name</label>
-      <input nz-input id="name" formControlName="name" (input)="createSlug()" required />
-      <div *ngIf="formCategories.controls['name'].invalid && (formCategories.controls['name'].dirty || formCategories.controls['name'].touched || form.submitted)">
-        <div class="text-danger">Name is required</div>
-      </div>
+  <div class="mb-20">
+    <label class="mb-10">Name</label>
+    <input nz-input id="name" formControlName="name" (input)="createSlug()" required />
+    <div class="mt-10" *ngIf="formCategories.controls['name'].invalid && (formCategories.controls['name'].dirty || formCategories.controls['name'].touched || form.submitted)">
+      <div class="text-danger">Name is required</div>
     </div>
-    <div *nzSpaceItem>
-      <label>Slug</label>
-      <input nz-input id="slug" formControlName="slug" />
-      <div *ngIf="formCategories.controls['slug'].invalid && (formCategories.controls['slug'].dirty || formCategories.controls['slug'].touched || form.submitted)">
-        <div class="text-danger">Slug is required</div>
-      </div>
+  </div>
+  <div class="mb-20">
+    <label class="mb-10">Slug</label>
+    <input nz-input id="slug" formControlName="slug" />
+    <div class="mt-10" *ngIf="formCategories.controls['slug'].invalid && (formCategories.controls['slug'].dirty || formCategories.controls['slug'].touched || form.submitted)">
+      <div class="text-danger">Slug is required</div>
     </div>
-    <div *nzSpaceItem>
-      <button nz-button nzType="primary" type="submit">Save</button>
-    </div>
-  </nz-space>
+  </div>
+  <div>
+    <button nz-button nzType="primary" type="submit">Save</button>
+  </div>
 </form>

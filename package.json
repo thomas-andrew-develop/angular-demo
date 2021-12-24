@@ -22,6 +22,7 @@
     "@angular/router": "~12.2.0",
     "@auth0/angular-jwt": "^5.0.2",
     "@kolkov/angular-editor": "^1.2.0",
+    "@tinymce/tinymce-angular": "^4.2.4",
     "autoprefixer": "^10.4.0",
     "boxicons": "^2.0.9",
     "masonry-layout": "^4.2.2",

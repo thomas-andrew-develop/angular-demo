@@ -1,1 +1,60 @@
-<p>save-blog works!asadasd</p>
+<form [formGroup]="formBlog" (ngSubmit)="submitForm(form)" #form='ngForm'>
+  <div nz-row [nzGutter]="30">
+    <div nz-col class="gutter-row" [nzSpan]="16">
+      <nz-card>
+        <div class="mb-20">
+          <label class="mb-10 f-bold">Name</label>
+          <input nz-input id="title" formControlName="title" />
+        </div>
+
+        <div class="mb-20">
+          <label class="mb-10 f-bold">Description</label>
+          <editor
+            id="description"
+            formControlName="description"
+            [init]="{
+              height: 500,
+              menubar: false,
+              plugins: [
+                'print preview powerpaste casechange importcss tinydrive searchreplace autolink autosave save directionality advcode visualblocks visualchars fullscreen image link media mediaembed template codesample table charmap hr pagebreak nonbreaking anchor toc insertdatetime advlist lists checklist wordcount tinymcespellchecker a11ychecker imagetools textpattern noneditable help formatpainter permanentpen pageembed charmap tinycomments mentions quickbars linkchecker emoticons advtable export',
+              ],
+              toolbar:
+                'undo redo | bold italic underline strikethrough | fontselect fontsizeselect formatselect | alignleft aligncenter alignright alignjustify | outdent indent |  numlist bullist checklist | forecolor backcolor casechange permanentpen formatpainter removeformat | pagebreak | charmap emoticons | fullscreen  preview save print | insertfile image media pageembed template link anchor codesample | a11ycheck ltr rtl | showcomments addcomment'
+            }"
+          ></editor>
+        </div>
+
+        <div>
+          <label class="mb-10 f-bold">Excerpt</label>
+          <textarea rows="6" nz-input id="excerpt" formControlName="excerpt"></textarea>
+        </div>
+      </nz-card>
+    </div>
+    <div nz-col class="gutter-row" [nzSpan]="8">
+      <nz-card class="mb-30">
+        <label class="mb-10 f-bold">Status</label>
+        <nz-select formControlName="status">
+          <nz-option nzValue="1" nzLabel="Approve"></nz-option>
+          <nz-option nzValue="0" nzLabel="Pending"></nz-option>
+        </nz-select>
+      </nz-card>
+      <nz-card class="mb-30">
+        <label class="mb-10 f-bold">Categories</label>
+        <div *ngFor="let category of categories; let i=index">
+          <label>
+            <input type="checkbox" [value]="category.value"  (change)="onCheckboxChange($event)" />
+            {{category.name}}
+          </label>
+        </div>
+      </nz-card>
+      <nz-card class="mb-30">
+        <label class="mb-10 f-bold">Featured Image</label>
+        <input nz-input id="image" formControlName="image" />
+      </nz-card>
+      <div>
+        <button nz-button nzType="primary" type="submit" nzBlock>Save</button>
+      </div>
+    </div>
+  </div>
+    
+</form>
