@@ -24,6 +24,9 @@ export class BlogService {
   updateBlogs(payload: any): Observable<any>{
     return this.httpClient.put(this.API_URL+'/blogs/'+payload.id, payload);
   }
+  detailBlog(payload: any): Observable<any>{
+    return this.httpClient.get(this.API_URL+'/blogs/'+payload, payload);
+  }
   
   fetchCategories(): Observable<any>{
     return this.httpClient.get(this.API_URL+'/categories');

@@ -59,17 +59,20 @@
         <label class="mb-10 f-bold">Categories</label>
         <div *ngFor="let categoryItem of categoriesList; let i=index" >
           <label class="mb-10 category-item">
-            <input type="checkbox" [value]="categoryItem.name"  (change)="onCheckboxChange($event)"  />
+            <input type="checkbox" [value]="categoryItem.name"  (change)="onCheckboxChange($event)" />
             {{categoryItem.name}}
           </label>
+        </div>
+        <div class="mt-10" *ngIf="formBlog.controls['category'].invalid && (formBlog.controls['category'].dirty || formBlog.controls['category'].touched || form.submitted)">
+          <div class="text-danger">Category is required</div>
         </div>
       </nz-card>
       <nz-card class="mb-30">
         <label class="mb-10 f-bold">Featured Image</label>
         <input nz-input id="image" formControlName="image" />
         <div class="mt-10" *ngIf="formBlog.controls['image'].invalid && (formBlog.controls['image'].dirty || formBlog.controls['image'].touched || form.submitted)">
-            <div class="text-danger">Title is required</div>
-          </div>
+          <div class="text-danger">Title is required</div>
+        </div>
       </nz-card>
       <div>
         <button nz-button nzType="primary" type="submit" nzBlock [nzSize]="'large'">Save</button>

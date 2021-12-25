@@ -8,7 +8,6 @@ import {Router} from '@angular/router';
 })
 export class BlogComponent implements OnInit {
   blogs: any;
-  isDelete = false;
   constructor(private blogService: BlogService, private router: Router) { }
 
   ngOnInit(): void {
@@ -23,11 +22,10 @@ export class BlogComponent implements OnInit {
 
   editBlog(id: any){
     console.log(id);
-    this.router.navigate(['admin/blog/edit', id]);
-    // this.router.navigate(
-    //   ['/blog/'id],
-    //   { queryParams: { order: 'popular', 'price-range': 'not-cheap' } }
-    // );
+    this.router.navigate(
+      ['admin/blog/edit', id], 
+      { queryParams: { page: 'Edit'} }
+    );
   }
 
   deleteBlog(id: any){

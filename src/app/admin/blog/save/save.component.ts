@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Validators, FormGroupDirective, FormGroup, FormControl, FormArray } from '@angular/forms';
 import { BlogService } from '../../../Services/blog.service';
 import { SlugifyPipe } from '../../../Pipe/slugify.pipe';
-import {Router} from '@angular/router';
+import {Router, ActivatedRoute} from '@angular/router';
 @Component({
   selector: 'app-save-blog',
   templateUrl: './save.component.html',
@@ -27,15 +27,41 @@ export class SaveBlogComponent implements OnInit {
   });
 
 
-  constructor(private blogService: BlogService, private slugifyPipe: SlugifyPipe, private router: Router) { }
+  constructor(
+    private blogService: BlogService,
+    private slugifyPipe: SlugifyPipe,
+    private router: Router,
+    private activeRoute: ActivatedRoute
+  ) { }
 
   ngOnInit(): void {
     this.getCategories();
+    const idBlog = this.activeRoute.snapshot.paramMap.get('id');
+    if(idBlog && idBlog != ''){
+      this.getDetailBlog(idBlog);
+    }
+    console.log(idBlog);
+  }
+
+  getDetailBlog(id: any){
+    this.blogService.detailBlog(id).subscribe(data => {
+      this.formBlog.setValue({
+        title: data.title,
+        slug: data.slug,
+        description: data.description,
+        excerpt: data.excerpt,
+        status: data.status,
+        image: data.image,
+        category: data.category,
+        createdAt: data.createdAt,
+        updatedAt: data.updatedAt,
+      });
+    });
   }
 
   onCheckboxChange(e: any) {
     const checkArray: FormArray = this.formBlog.get('category') as FormArray;
-
+    console.log(checkArray);
     if (e.target.checked) {
       checkArray.push(new FormControl(e.target.value));
     } else {
@@ -48,7 +74,6 @@ export class SaveBlogComponent implements OnInit {
         i++;
       });
     }
-    console.log(checkArray)
   }
 
   createSlug(){
