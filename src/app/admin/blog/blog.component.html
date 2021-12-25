@@ -6,20 +6,26 @@
   <thead>
     <tr>
       <th>#</th>
+      <th>Image</th>
       <th>Name</th>
       <th>Excerpt</th>
+      <th>Created at</th>
+      <th>Updated at</th>
       <th>Action</th>
     </tr>
   </thead>
   <tbody>
     <tr *ngFor="let blog of blogs; let i = index">
       <td>{{ i + 1}}</td>
-      <td>{{ blog.title }}</td>
-      <td>{{ blog.excerpt }}</td>
+      <td><img [src]="blog.image" /></td>
+      <td>{{ blog.title  | limitText:[20]}}</td>
+      <td>{{ blog.excerpt | limitText:[20] }}</td>
+      <td>{{ blog.createdAt | date: 'dd MMM yyyy' }}</td>
+      <td>{{ blog.updatedAt | date: 'dd MMM yyyy'}}</td>
       <td>
-        <a>Edit</a>
+        <a nz-button nzType="primary" (click)="editBlog(blog.id)">Edit</a>
         <nz-divider nzType="vertical"></nz-divider>
-        <a>Delete</a>
+        <a nz-button nzDanger (click)="deleteBlog(blog.id)">Delete</a>
       </td>
     </tr>
   </tbody>

@@ -19,9 +19,9 @@
           <td>{{ i + 1}}</td>
           <td>{{ category.name }}</td>
           <td>
-            <a (click)="getCategoryDetail(category)">Edit</a>
+            <a nz-button nzType="primary" (click)="getCategoryDetail(category)">Edit</a>
             <nz-divider nzType="vertical"></nz-divider>
-            <a (click)="deleteCategories(category.id)">Delete</a>
+            <a nz-button nzDanger (click)="deleteCategories(category.id)">Delete</a>
           </td>
         </tr>
       </tbody>

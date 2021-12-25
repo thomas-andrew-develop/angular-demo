@@ -7,6 +7,7 @@ const routes: Routes = [
     { path: 'categories', loadChildren: () => import('./categories-admin/categories-admin.module').then(m => m.CategoriesAdminModule) },
     { path: 'blog', loadChildren: () => import('./blog/blog.module').then(m => m.BlogModule) },
     { path: 'blog/add', loadChildren: () => import('./blog/save/save.module').then(m => m.SaveBlogModule) },
+    { path: 'blog/edit/:id', loadChildren: () => import('./blog/save/save.module').then(m => m.SaveBlogModule) },
   ] },
   // { path: 'admin/categories-admin/add', loadChildren: () => import('./categories-admin/save/save.module').then(m => m.SaveCategoriesModule) }
 ];

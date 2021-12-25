@@ -3,8 +3,19 @@
     <div nz-col class="gutter-row" [nzSpan]="16">
       <nz-card>
         <div class="mb-20">
-          <label class="mb-10 f-bold">Name</label>
-          <input nz-input id="title" formControlName="title" />
+          <label class="mb-10 f-bold">Title</label>
+          <input nz-input id="title" formControlName="title" (input)="createSlug()" required/>
+          <div class="mt-10" *ngIf="formBlog.controls['title'].invalid && (formBlog.controls['title'].dirty || formBlog.controls['title'].touched || form.submitted)">
+            <div class="text-danger">Title is required</div>
+          </div>
+        </div>
+
+        <div class="mb-20">
+          <label class="mb-10 f-bold">Slug</label>
+          <input nz-input id="slug" formControlName="slug" required/>
+          <div class="mt-10" *ngIf="formBlog.controls['slug'].invalid && (formBlog.controls['slug'].dirty || formBlog.controls['slug'].touched || form.submitted)">
+            <div class="text-danger">Slug is required</div>
+          </div>
         </div>
 
         <div class="mb-20">
@@ -22,11 +33,17 @@
                 'undo redo | bold italic underline strikethrough | fontselect fontsizeselect formatselect | alignleft aligncenter alignright alignjustify | outdent indent |  numlist bullist checklist | forecolor backcolor casechange permanentpen formatpainter removeformat | pagebreak | charmap emoticons | fullscreen  preview save print | insertfile image media pageembed template link anchor codesample | a11ycheck ltr rtl | showcomments addcomment'
             }"
           ></editor>
+          <div class="mt-10" *ngIf="formBlog.controls['description'].invalid && (formBlog.controls['description'].dirty || formBlog.controls['description'].touched || form.submitted)">
+            <div class="text-danger">Title is required</div>
+          </div>
         </div>
 
         <div>
           <label class="mb-10 f-bold">Excerpt</label>
           <textarea rows="6" nz-input id="excerpt" formControlName="excerpt"></textarea>
+          <div class="mt-10" *ngIf="formBlog.controls['excerpt'].invalid && (formBlog.controls['excerpt'].dirty || formBlog.controls['excerpt'].touched || form.submitted)">
+            <div class="text-danger">Title is required</div>
+          </div>
         </div>
       </nz-card>
     </div>
@@ -34,25 +51,28 @@
       <nz-card class="mb-30">
         <label class="mb-10 f-bold">Status</label>
         <nz-select formControlName="status">
-          <nz-option nzValue="1" nzLabel="Approve"></nz-option>
+          <nz-option nzValue="1" nzLabel="Approve" ></nz-option>
           <nz-option nzValue="0" nzLabel="Pending"></nz-option>
         </nz-select>
       </nz-card>
       <nz-card class="mb-30">
         <label class="mb-10 f-bold">Categories</label>
-        <div *ngFor="let category of categories; let i=index">
-          <label>
-            <input type="checkbox" [value]="category.value"  (change)="onCheckboxChange($event)" />
-            {{category.name}}
+        <div *ngFor="let categoryItem of categoriesList; let i=index" >
+          <label class="mb-10 category-item">
+            <input type="checkbox" [value]="categoryItem.name"  (change)="onCheckboxChange($event)"  />
+            {{categoryItem.name}}
           </label>
         </div>
       </nz-card>
       <nz-card class="mb-30">
         <label class="mb-10 f-bold">Featured Image</label>
         <input nz-input id="image" formControlName="image" />
+        <div class="mt-10" *ngIf="formBlog.controls['image'].invalid && (formBlog.controls['image'].dirty || formBlog.controls['image'].touched || form.submitted)">
+            <div class="text-danger">Title is required</div>
+          </div>
       </nz-card>
       <div>
-        <button nz-button nzType="primary" type="submit" nzBlock>Save</button>
+        <button nz-button nzType="primary" type="submit" nzBlock [nzSize]="'large'">Save</button>
       </div>
     </div>
   </div>

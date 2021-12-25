@@ -12,14 +12,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NzIconModule } from 'ng-zorro-antd/icon';
 import { FrontendModule } from './frontend/frontend.module'
 import { AdminModule } from './admin/admin.module';
-import { SlugifyPipe } from './Pipe/slugify.pipe';
 
 registerLocaleData(en);
 @NgModule({
   declarations: [
     AppComponent,
     NotFoundComponent,
-    SlugifyPipe,
   ],
   imports: [
     BrowserModule,

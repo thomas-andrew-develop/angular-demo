@@ -10,10 +10,11 @@ import { NzFormModule } from 'ng-zorro-antd/form';
 import { NzLayoutModule } from 'ng-zorro-antd/layout';
 import { NzGridModule } from 'ng-zorro-antd/grid';
 import { NzButtonModule } from 'ng-zorro-antd/button';
-
+import { LimitTextPipe } from '../../Pipe/limit-text.pipe';
 @NgModule({
   declarations: [
-    BlogComponent
+    BlogComponent,
+    LimitTextPipe
   ],
   imports: [
     CommonModule,

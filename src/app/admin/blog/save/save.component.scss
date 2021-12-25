@@ -1,3 +1,20 @@
 nz-select {
   width: 100%;
 }
+input[type='checkbox']{
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+}
+.category-item{
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+     -moz-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
