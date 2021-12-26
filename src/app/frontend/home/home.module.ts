@@ -12,7 +12,8 @@ import { NzCardModule } from 'ng-zorro-antd/card';
 import { NgxMasonryModule } from 'ngx-masonry';
 import { HomeLatestPostComponent } from './components/home-latest-post/home-latest-post.component';
 import { NzDividerModule } from 'ng-zorro-antd/divider';
-import { BannerModule } from '../common/banner/banner.module'
+import { BannerModule } from '../common/banner/banner.module';
+import { NzPaginationModule } from 'ng-zorro-antd/pagination';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { BannerModule } from '../common/banner/banner.module'
     NzCardModule,
     NgxMasonryModule,
     NzDividerModule,
-    BannerModule
+    BannerModule,
+    NzPaginationModule
   ]
 })
 export class HomeModule { }

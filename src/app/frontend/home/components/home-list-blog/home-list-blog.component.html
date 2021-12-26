@@ -6,20 +6,21 @@
           <img alt="blog.title" [src]="blog.image" />
         </div>
         <div class="info">
-          <div class="info-meta mb-10"><span>by {{blog.author}}</span> <span class="pl-10">{{blog.date_post}}</span></div>
+          <div class="info-meta mb-10"><span>by Admin</span> <span class="pl-10">{{blog.createdAt | date: 'dd MMM yyyy' }}</span></div>
           <div class="title mb-10">
             <a>{{blog.title}}</a>
           </div>
           <div class="excerpt mb-10">{{blog.excerpt}}</div>
           <div class="blog-category">
-            <nz-space nzAlign="center" [nzSplit]="spaceSplit">
+            {{blog.category }}
+            <!-- <nz-space nzAlign="center" [nzSplit]="spaceSplit">
               <ng-template #spaceSplit>
                 <span>, </span>
               </ng-template>
-              <ng-container  *ngFor="let blogCategory of blog.category">
-                <span *nzSpaceItem>{{getCategory(blogCategory) | uppercase}}</span>
+              <ng-container  *ngFor="let blogCategory of categoriesList">
+                <span *nzSpaceItem>{{blogCategory | uppercase}}</span>
               </ng-container>
-            </nz-space> 
+            </nz-space>  -->
           </div>
         </div>
       </div>

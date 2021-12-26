@@ -9,7 +9,17 @@
 
       <div nz-row [nzGutter]="48">
         <div nz-col nzMd="18">
-          <app-home-list-blog [blogs]="blogs"></app-home-list-blog>
+          <div class="mb-30">
+            <app-home-list-blog [blogs]="blogs"></app-home-list-blog>
+          </div>
+          <div class="text-center">
+            <nz-pagination 
+              [nzPageIndex]="index" 
+              [nzTotal]="total" 
+              [nzPageSize]="limit"
+              (nzPageIndexChange)="changePage($event)"
+            ></nz-pagination>
+          </div>
         </div>
         <div nz-col nzMd="6">
           <app-home-latest-post [latestBlogs]='latestBlogs'></app-home-latest-post>

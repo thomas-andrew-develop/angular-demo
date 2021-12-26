@@ -34,7 +34,7 @@
             }"
           ></editor>
           <div class="mt-10" *ngIf="formBlog.controls['description'].invalid && (formBlog.controls['description'].dirty || formBlog.controls['description'].touched || form.submitted)">
-            <div class="text-danger">Title is required</div>
+            <div class="text-danger">Description is required</div>
           </div>
         </div>
 
@@ -42,7 +42,7 @@
           <label class="mb-10 f-bold">Excerpt</label>
           <textarea rows="6" nz-input id="excerpt" formControlName="excerpt"></textarea>
           <div class="mt-10" *ngIf="formBlog.controls['excerpt'].invalid && (formBlog.controls['excerpt'].dirty || formBlog.controls['excerpt'].touched || form.submitted)">
-            <div class="text-danger">Title is required</div>
+            <div class="text-danger">Excerpt is required</div>
           </div>
         </div>
       </nz-card>
@@ -56,8 +56,13 @@
         </nz-select>
       </nz-card>
       <nz-card class="mb-30">
+        <label class="f-bold category-item">
+          <input nz-input type="checkbox" formControlName="sticky" id="sticky" />Sticky Post
+        </label>
+      </nz-card>
+      <nz-card class="mb-30">
         <label class="mb-10 f-bold">Categories</label>
-        <div *ngFor="let categoryItem of categoriesList; let i=index" >
+        <div  formArrayName="category" *ngFor="let categoryItem of categoriesList; let i=index" >
           <label class="mb-10 category-item">
             <input type="checkbox" [value]="categoryItem.name"  (change)="onCheckboxChange($event)" />
             {{categoryItem.name}}
@@ -71,7 +76,7 @@
         <label class="mb-10 f-bold">Featured Image</label>
         <input nz-input id="image" formControlName="image" />
         <div class="mt-10" *ngIf="formBlog.controls['image'].invalid && (formBlog.controls['image'].dirty || formBlog.controls['image'].touched || form.submitted)">
-          <div class="text-danger">Title is required</div>
+          <div class="text-danger">Image is required</div>
         </div>
       </nz-card>
       <div>

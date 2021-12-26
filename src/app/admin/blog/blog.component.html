@@ -2,7 +2,16 @@
   <a nz-button nzType="primary" routerLink="/admin/blog/add">Add</a>
 </div>
 
-<nz-table #basicTable [nzData]="blogs">
+<nz-table 
+  #basicTable 
+  [nzData]="blogs"
+  [nzFrontPagination]="false"
+  [nzLoading]="loading"
+  [nzTotal]="total"
+  [nzPageSize]="pageSize"
+  [nzPageIndex]="pageIndex"
+  (nzQueryParams)="onQueryParamsChange($event)"
+>
   <thead>
     <tr>
       <th>#</th>

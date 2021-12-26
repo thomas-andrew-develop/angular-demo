@@ -12,7 +12,7 @@ import {Router, ActivatedRoute} from '@angular/router';
 export class SaveBlogComponent implements OnInit {
   categoriesList : any;
 
-  categoriesChecked: any; 
+  categoriesChecked: any = []; 
 
   formBlog : FormGroup = new FormGroup({
     title: new FormControl('', [Validators.required]),
@@ -24,6 +24,7 @@ export class SaveBlogComponent implements OnInit {
     category: new FormArray([], [Validators.required]),
     createdAt: new FormControl(''),
     updatedAt: new FormControl(''),
+    sticky: new FormControl(false),
   });
 
 
@@ -40,7 +41,7 @@ export class SaveBlogComponent implements OnInit {
     if(idBlog && idBlog != ''){
       this.getDetailBlog(idBlog);
     }
-    console.log(idBlog);
+    
   }
 
   getDetailBlog(id: any){
@@ -56,12 +57,19 @@ export class SaveBlogComponent implements OnInit {
         createdAt: data.createdAt,
         updatedAt: data.updatedAt,
       });
+      this.categoriesChecked = data.category;
+      // let categoriesList = data.category;
+      // let i: number = 0;
+      // categoriesList.forEach((item: any) => {
+      //   console.log(item);
+      //   this.categoriesChecked.push(item);
+      //   i++;
+      // });
     });
   }
 
   onCheckboxChange(e: any) {
     const checkArray: FormArray = this.formBlog.get('category') as FormArray;
-    console.log(checkArray);
     if (e.target.checked) {
       checkArray.push(new FormControl(e.target.value));
     } else {
@@ -83,7 +91,7 @@ export class SaveBlogComponent implements OnInit {
   }
 
   submitForm(form: FormGroupDirective){
-
+  
     if(this.formBlog.valid){
       const params = this.formBlog.value;
       params.createdAt = new Date();
@@ -98,8 +106,8 @@ export class SaveBlogComponent implements OnInit {
       });
       // }
       
-      form.resetForm();
-      this.formBlog.reset();
+      // form.resetForm();
+      // this.formBlog.reset();
     }
     
   }

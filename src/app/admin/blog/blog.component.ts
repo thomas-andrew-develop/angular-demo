@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { BlogService } from '../../Services/blog.service';
 import {Router} from '@angular/router';
+import { NzTableQueryParams } from 'ng-zorro-antd/table';
 @Component({
   selector: 'app-blog',
   templateUrl: './blog.component.html',
@@ -8,29 +9,44 @@ import {Router} from '@angular/router';
 })
 export class BlogComponent implements OnInit {
   blogs: any;
+  total = 1;
+  loading = true;
+  pageSize = 5;
+  pageIndex = 1;
   constructor(private blogService: BlogService, private router: Router) { }
 
   ngOnInit(): void {
-    this.fetchData();
+    this.fetchData(this.pageIndex, this.pageSize);
   }
 
-  fetchData(){
-    this.blogService.fetchBlogs().subscribe(data => {
+  fetchData(pageIndex: number,pageSize: number,){
+    let params = '?page='+pageIndex+'&limit='+pageSize;
+    let paramsTotal = '';
+    this.loading = true;
+    this.blogService.fetchBlogs(paramsTotal).subscribe(data => {
+      this.total = data.length;
+    });
+    this.blogService.fetchBlogs(params).subscribe(data => {
+      this.loading = false;
       this.blogs = data;
     });
   }
 
   editBlog(id: any){
-    console.log(id);
     this.router.navigate(
-      ['admin/blog/edit', id], 
-      { queryParams: { page: 'Edit'} }
+      ['admin/blog/edit', id]
     );
   }
 
   deleteBlog(id: any){
     this.blogService.deleteBlogs(id).subscribe(data => {
-      this.fetchData()
+      // this.fetchData()
     });
+  }
+
+  onQueryParamsChange(params: NzTableQueryParams): void {
+    console.log(params);
+    const { pageSize, pageIndex } = params;
+    this.fetchData(pageIndex, pageSize);
   }
 }
