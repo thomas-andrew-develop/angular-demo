@@ -2,16 +2,23 @@
   <nz-sider nzCollapsible [(nzCollapsed)]="isCollapsed" [nzTrigger]="null">
     <a routerLink="/admin"><div class="logo"></div></a>
     <ul nz-menu nzTheme="dark" nzMode="inline">
-      <li nz-submenu nzTitle="Blog" nzIcon="book">
+      <li>
+        <a routerLink="/admin" nz-menu-item routerLinkActive="ant-menu-item-selected" [routerLinkActiveOptions]="{ exact: true }">
+          <i nz-icon nzType="home"></i>
+          <span>Dashboard</span>
+        </a>
+      </li>
+      <li nz-submenu nzTitle="Blog" nzIcon="book" nzOpen>
         <ul>
-          <li nz-menu-item><a routerLink="/admin/blog">Blog List</a></li>
-          <li nz-menu-item><a routerLink="/admin/blog/add">Add Blog</a></li>
+          <li nz-menu-item routerLinkActive="ant-menu-item-selected"><a routerLink="/admin/blog" >Blog List</a></li>
+          <li nz-menu-item routerLinkActive="ant-menu-item-selected"><a routerLink="/admin/blog/add">Add Blog</a></li>
         </ul>
       </li>
-      <li nz-submenu nzTitle="Categories" nzIcon="copy">
-        <ul>
-          <li nz-menu-item><a routerLink="/admin/categories">Categories</a></li>
-        </ul>
+      <li>
+        <a routerLink="/admin/categories" nz-menu-item routerLinkActive="ant-menu-item-selected">
+          <i nz-icon nzType="appstore"></i>
+          <span>Categories</span>
+        </a>
       </li>
       <li nz-submenu nzTitle="Setting Page" nzIcon="setting">
         <ul>
@@ -32,8 +39,8 @@
     </nz-header>
     <nz-content>
       <nz-breadcrumb>
-        <nz-breadcrumb-item>User</nz-breadcrumb-item>
-        <nz-breadcrumb-item>Bill</nz-breadcrumb-item>
+        <nz-breadcrumb-item>Dashboard</nz-breadcrumb-item>
+        <nz-breadcrumb-item>{{titleBreadcrumb}}</nz-breadcrumb-item>
       </nz-breadcrumb>
       <div class="inner-content">
         <router-outlet></router-outlet>

@@ -15,20 +15,19 @@ export class HomeComponent implements OnInit {
   index: number = 1;
   total: number = 10;
   limit: number = 4;
-
-  loading = true;
-
+  category: any = '';
+  
   constructor(private blogService: BlogService) { }
 
   ngOnInit(): void {
-    this.getBlogs(this.index, this.limit);
+    this.getBlogs(this.category, this.index, this.limit);
     this.getCategories();
     this.getBlogsLatest();    
   }
 
-  getBlogs(index: number, limit: number){
-    let paramsTotal = '';
-    let params = '?page='+index+'&limit='+limit;
+  getBlogs(category: String, index: number, limit: number){
+    let paramsTotal = '?category='+category;
+    let params = '?page='+index+'&limit='+limit+'&category='+category;
     this.blogService.fetchBlogs(paramsTotal).subscribe(blogsTotal => {
       this.total = blogsTotal.length;
     });
@@ -51,6 +50,14 @@ export class HomeComponent implements OnInit {
   }
   
   changePage(val: any){
-    this.getBlogs(val, this.limit);
+    this.index = val;
+    this.getBlogs(this.category, val, this.limit);
+    console.log(this.category)
+  }
+
+  getCategory(category: any){
+    this.category = category;
+    this.index = 1;
+    this.getBlogs(category, this.index, this.limit);
   }
 }

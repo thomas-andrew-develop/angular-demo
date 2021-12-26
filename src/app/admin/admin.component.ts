@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import {Router, ActivatedRoute} from '@angular/router';
 @Component({
   selector: 'app-admin',
   templateUrl: './admin.component.html',
@@ -8,7 +8,11 @@ import { Component, OnInit } from '@angular/core';
 export class AdminComponent implements OnInit {
   isCollapsed = false;
 
-  constructor() { }
+  titleBreadcrumb: any;
+
+  constructor(private router: Router,private activeRoute: ActivatedRoute) {
+    console.log(activeRoute);
+  }
 
   ngOnInit(): void {
   }

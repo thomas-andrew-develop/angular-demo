@@ -4,7 +4,7 @@
   <div class="padding-main">
     <div class="container">
       <div class="mb-60">
-        <app-categories [categoriesList]="categoriesList"></app-categories>
+        <app-categories (getCategory)="getCategory($event)" [categoriesList]="categoriesList"></app-categories>
       </div>
 
       <div nz-row [nzGutter]="48">

@@ -1,8 +1,16 @@
 <div class="categories">
   <nz-space nzAlign="center" [nzSize]="size">
-    <span *nzSpaceItem class="active">All</span>
-    <ng-container  *ngFor="let category of categoriesList; let i = index">
-      <span  *nzSpaceItem>{{category.name}}</span>
+    <span 
+      *nzSpaceItem
+      [ngClass]="categoryActive === '' ?  'active' : ''"
+      (click)="selectCategory('')"
+    >All</span>
+    <ng-container  *ngFor="let categoryItem of categoriesList; let i = index">
+      <span
+        *nzSpaceItem
+        (click)="selectCategory(categoryItem.name)"
+        [ngClass]="categoryItem.name === categoryActive ?  'active' : ''"
+      >{{categoryItem.name}}</span>
     </ng-container>
   </nz-space> 
 </div>

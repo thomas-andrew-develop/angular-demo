@@ -14,6 +14,7 @@ import { HomeLatestPostComponent } from './components/home-latest-post/home-late
 import { NzDividerModule } from 'ng-zorro-antd/divider';
 import { BannerModule } from '../common/banner/banner.module';
 import { NzPaginationModule } from 'ng-zorro-antd/pagination';
+import { NzIconModule } from 'ng-zorro-antd/icon';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { NzPaginationModule } from 'ng-zorro-antd/pagination';
     NgxMasonryModule,
     NzDividerModule,
     BannerModule,
-    NzPaginationModule
+    NzPaginationModule,
+    NzIconModule
   ]
 })
 export class HomeModule { }
