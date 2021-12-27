@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, Input, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, Input, EventEmitter, SimpleChanges } from '@angular/core';
 import { Validators, FormGroupDirective, FormGroup, FormControl } from '@angular/forms';
 import { SlugifyPipe } from '../../../Pipe/slugify.pipe'; 
 @Component({
@@ -21,11 +21,16 @@ export class SaveCategoriesComponent implements OnInit {
   constructor(private slugifyPipe: SlugifyPipe) { }
 
   ngOnInit(): void {
+    
+  }
+
+  ngOnChanges(){
     this.formCategories.setValue({
       name: this.categoryDetail.name,
       slug: this.categoryDetail.slug,
     })
   }
+
   createSlug(){
     let name = this.formCategories.controls['name'].value;
     let slug = this.slugifyPipe.transform(name);

@@ -1,36 +1,4 @@
-.wrap-login{
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: stretch;
-  -webkit-align-items: stretch;
-     -moz-box-align: stretch;
-      -ms-flex-align: stretch;
-          align-items: stretch;
-}
-.wrap-login__left{
-  -webkit-box-flex: 1;
-  -webkit-flex-grow: 1;
-     -moz-box-flex: 1;
-      -ms-flex-positive: 1;
-          flex-grow: 1;
-  background: url(../../assets/images/bg_login.jpg) center center no-repeat;
-  -webkit-background-size: cover;
-     -moz-background-size: cover;
-       -o-background-size: cover;
-          background-size: cover;
-  height: 100vh;
-}
-
-.wrap-login__right{
-  padding: 30px 95px;
-  -webkit-box-flex: 0;
-  -webkit-flex: 0 0 440px;
-     -moz-box-flex: 0;
-      -ms-flex: 0 0 440px;
-          flex: 0 0 440px;
+.container-login{
   display: -webkit-box;
   display: -webkit-flex;
   display: -moz-box;
@@ -41,4 +9,159 @@
      -moz-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+     -moz-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  min-height: 100vh;
+  background: url(../../assets/images/bg-01.jpg) center no-repeat;
+  -webkit-background-size: cover;
+     -moz-background-size: cover;
+       -o-background-size: cover;
+          background-size: cover;
+  &:before {
+    content: "";
+    display: block;
+    position: absolute;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: rgba(255,255,255,.9);
+  }
+}
+
+.wrap-login{
+  width: 500px;
+  -webkit-border-radius: 10px;
+     -moz-border-radius: 10px;
+          border-radius: 10px;
+  overflow: hidden;
+  padding: 90px 55px;
+  background: #9152f8;
+  background: -webkit-gradient(linear,left bottom, left top,from(#7579ff),to(#b224ef));
+  background: -webkit-linear-gradient(bottom,#7579ff,#b224ef);
+  background: -moz-linear-gradient(bottom,#7579ff,#b224ef);
+  background: -o-linear-gradient(bottom,#7579ff,#b224ef);
+  background: linear-gradient(to top,#7579ff,#b224ef);
+  position: relative;
+  z-index: 9;
+}
+
+.form-logo{
+  font-size: 60px;
+  color: #333;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+     -moz-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+     -moz-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 120px;
+  height: 120px;
+  -webkit-border-radius: 50%;
+     -moz-border-radius: 50%;
+          border-radius: 50%;
+  background-color: #fff;
+  margin: 0 auto;
+}
+
+.login-form-title {
+  font-size: 30px;
+  color: #fff;
+  line-height: 1.2;
+  text-align: center;
+  text-transform: uppercase;
+  display: block;
+}
+
+.login-form-btn{
+  font-size: 16px;
+  color: #555;
+  line-height: 1.2;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+     -moz-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+     -moz-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 0 20px;
+  margin: 0 auto;
+  min-width: 120px;
+  height: 50px;
+  -webkit-border-radius: 25px;
+     -moz-border-radius: 25px;
+          border-radius: 25px;
+  background: #9152f8;
+  background: -webkit-gradient(linear,left top, left bottom,from(#7579ff),to(#b224ef));
+  background: -webkit-linear-gradient(top,#7579ff,#b224ef);
+  background: -moz-linear-gradient(top,#7579ff,#b224ef);
+  background: -o-linear-gradient(top,#7579ff,#b224ef);
+  background: linear-gradient(to bottom,#7579ff,#b224ef);
+  position: relative;
+  z-index: 1;
+  -webkit-transition: all .4s;
+  -o-transition: all .4s;
+  -moz-transition: all .4s;
+  transition: all .4s;
+  outline: none!important;
+  border: none;
+  &:before{
+    content: "";
+    display: block;
+    position: absolute;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    -webkit-border-radius: 25px;
+       -moz-border-radius: 25px;
+            border-radius: 25px;
+    background-color: #fff;
+    top: 0;
+    left: 0;
+    opacity: 1;
+    -webkit-transition: all .4s;
+    -o-transition: all .4s;
+    -moz-transition: all .4s;
+    transition: all .4s;
+  }
+  &:hover{
+    color: #fff;
+    &:before{
+      opacity: 0;
+    }
+  }
+}
+
+.text-error{
+  color: #fff!important;
+}
+.ant-form-item-has-error .ant-input-prefix{
+  color: #333!important;
+}
+.anticon, .anticon svg{
+  color: #333!important;
+  fill{
+    fill: #333!important;
+  }
 }

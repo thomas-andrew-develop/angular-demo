@@ -2,9 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Validators, FormGroupDirective, FormGroup, FormControl, FormArray } from '@angular/forms';
 import { BlogService } from '../../../Services/blog.service';
 import { SlugifyPipe } from '../../../Pipe/slugify.pipe';
-import {Router, ActivatedRoute} from '@angular/router';
-import { toArray } from 'rxjs/operators';  
-@Component({
+import {Router, ActivatedRoute} from '@angular/router';@Component({
   selector: 'app-save-blog',
   templateUrl: './save.component.html',
   styleUrls: ['./save.component.scss'],

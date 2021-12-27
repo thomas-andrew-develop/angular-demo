@@ -21,4 +21,9 @@ export class AdminComponent implements OnInit {
     this.isCollapsed = !this.isCollapsed;
   }
 
+  logout(){
+    localStorage.removeItem('token');
+    this.router.navigate(['/login'])
+  }
+
 }

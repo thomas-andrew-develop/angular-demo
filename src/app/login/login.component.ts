@@ -1,47 +1,47 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators, AbstractControl } from '@angular/forms';
-import { AppService } from '../Services/app.service';
-import {HttpParams} from "@angular/common/http";
+import { FormControl, FormGroup, Validators, } from '@angular/forms';
+import { BlogService } from '../Services/blog.service';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-
   formLogin: FormGroup = new FormGroup({
     username: new FormControl('', [Validators.required, Validators.email]),
     password: new FormControl('', [Validators.required, Validators.minLength(6)]),
-    grant_type: new FormControl('password'),
   });
 
   submitted = false;
 
   errorMessage = '';
 
-  constructor(private AppService: AppService) { }
+  constructor(private blogService: BlogService, public router: Router) { }
 
   ngOnInit(): void {
     const payload = {};
-    this.AppService.fetchTodo().subscribe();
-  }
-
-  get f(): { [key: string]: AbstractControl } {
-    return this.formLogin.controls;
   }
 
   onSubmit(): void {
     this.submitted = true;
+    let params = this.formLogin.value;
     if(this.formLogin.valid){
-      const params = new HttpParams()
-        .set('username', this.formLogin.controls['username'].value)
-        .set('password', this.formLogin.controls['password'].value)
-        .set('grant_type', 'password');
-      this.AppService.login(params.toString()).subscribe(data => {
-        if(data.access_token){
-          localStorage.setItem("token", JSON.stringify(data.access_token));
+      this.blogService.loginBlogs().subscribe(data => {
+        let email : any = data.find((item: any) => item.email == params.username);
+        let password : any = data.find((item: any) => item.password == params.password);
+        if(Object.keys(email).length > 0 && Object.keys(password).length > 0){
+          localStorage.setItem('token', params.email);
+          this.router.navigate(['/admin']);
         }
-      },error => this.errorMessage = error.error.error_description);
+      });
+    }else{
+      Object.values(this.formLogin.controls).forEach(control => {
+        if (control.invalid) {
+          control.markAsDirty();
+          control.updateValueAndValidity({ onlySelf: true });
+        }
+      });
     }
   }
 

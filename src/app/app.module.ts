@@ -12,6 +12,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NzIconModule } from 'ng-zorro-antd/icon';
 import { FrontendModule } from './frontend/frontend.module'
 import { AdminModule } from './admin/admin.module';
+import { AuthGuardService } from './Services/Auth/auth-guard.service';
 
 registerLocaleData(en);
 @NgModule({
@@ -28,7 +29,7 @@ registerLocaleData(en);
     AdminModule,
     NzIconModule,
   ],
-  providers: [{ provide: NZ_I18N, useValue: en_US }],
+  providers: [AuthGuardService, { provide: NZ_I18N, useValue: en_US }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

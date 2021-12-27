@@ -1,39 +1,51 @@
-<div class="wrap-login">
-  <div class="wrap-login__left"></div>
-  <div class="wrap-login__right">
-    <form novalidate [formGroup]="formLogin" (ngSubmit)="onSubmit()">
-      <img src="../../assets/images/Logo-Calisa-Xanh.png" />
+<div class="container-login">
+  <div class="wrap-login">
+    <form novalidate [formGroup]="formLogin" class="login-form" (ngSubmit)="onSubmit()">
     
-      <div class="mb-4">Sign In To Supply Chain</div>
-
-      <div class="mb-3">
-        <input 
-          type="email"
-          formControlName="username"
-          class="form-control"
-          placeholder="User  Name"
-        />
-        <div *ngIf="submitted && f['username'].errors || f['username'].invalid && f['username'].touched" >
-          <div class="text-danger" *ngIf="f['username'].errors && f['username'].errors['required']">Email is required</div>
-          <div class="text-danger" *ngIf="f['username'].errors && f['username'].errors['email']">Email is invalid</div>
-        </div>
-      </div>
-      <div class="mb-3">
-        <input 
-          type="password" 
-          formControlName="password" 
-          class="form-control" 
-          placeholder="Password"
-        />
-        <div *ngIf="submitted && f['password'].errors || f['password'].invalid && f['password'].touched" >
-          <div class="text-danger" *ngIf="f['password'].errors && f['password'].errors['required']">Password is required</div>
-          <div class="text-danger" *ngIf="f['password'].errors && f['password'].errors['minlength']">Password is minimum 6 characters</div>
-        </div>
+      <div class="text-center">
+        <span class="form-logo"><i nz-icon nzType="user" nzTheme="outline"></i></span>
+        <span class="login-form-title mt-30 mb-30">Đăng nhập</span>
       </div>
 
-      <div *ngIf="errorMessage.length > 0" class="text-danger mb-3">{{errorMessage}}</div>
-
-      <input type="submit" class="btn btn-primary"/>
+      <nz-form-item class="mb-30">
+        <nz-form-control>
+          <nz-input-group nzPrefixIcon="user" nzSize="large">
+            <input
+              nz-input
+              type="email"
+              formControlName="username"
+              class="form-control"
+              placeholder="User  Name"
+              nzSize="large"
+            />
+          </nz-input-group>
+        </nz-form-control>
+        <div *ngIf="submitted && formLogin.controls['username'].errors || formLogin.controls['username'].invalid && formLogin.controls['username'].touched" >
+          <div class="text-error" *ngIf="formLogin.controls['username'].errors && formLogin.controls['username'].errors['required']">Email is required</div>
+          <div class="text-error" *ngIf="formLogin.controls['username'].errors && formLogin.controls['username'].errors['email']">Email is invalid</div>
+        </div>
+      </nz-form-item>
+      <nz-form-item class="mb-30">
+        <nz-form-control>
+          <nz-input-group nzPrefixIcon="lock" nzSize="large">
+            <input 
+              nz-input
+              type="password" 
+              formControlName="password" 
+              class="form-control" 
+              placeholder="Password"
+              nzSize="large"
+            />
+          </nz-input-group>
+        </nz-form-control>
+        <div *ngIf="submitted && formLogin.controls['password'].errors || formLogin.controls['password'].invalid && formLogin.controls['password'].touched" >
+          <div class="text-error" *ngIf="formLogin.controls['password'].errors && formLogin.controls['password'].errors['required']">Password is required</div>
+          <div class="text-error" *ngIf="formLogin.controls['password'].errors && formLogin.controls['password'].errors['minlength']">Password is minimum 6 characters</div>
+        </div>
+      </nz-form-item>
+      <div class="text-center">
+        <button type="submit" class="login-form-btn">Submit</button>
+      </div>
     </form>
   </div>
 </div>

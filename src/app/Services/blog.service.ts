@@ -9,13 +9,13 @@ export class BlogService {
   API_URL = environment.API_URL;
   constructor(private httpClient: HttpClient) { }
 
+  loginBlogs(): Observable<any>{
+    return this.httpClient.get(this.API_URL+'/auth');
+  }
+
   fetchBlogs(payload: any): Observable<any>{
     return this.httpClient.get(this.API_URL+'/blogs'+payload);
   }
-
-  // getBlogsPagination(payload: any): Observable<any>{
-  //   return this.httpClient.get(this.API_URL+'/blogs'+payload);
-  // }
 
   addBlogs(payload: any): Observable<any>{
     return this.httpClient.post(this.API_URL+'/blogs', payload);
