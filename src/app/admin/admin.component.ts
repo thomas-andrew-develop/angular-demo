@@ -11,7 +11,7 @@ export class AdminComponent implements OnInit {
   titleBreadcrumb: any;
 
   constructor(private router: Router,private activeRoute: ActivatedRoute) {
-    console.log(activeRoute);
+    // console.log(activeRoute);
   }
 
   ngOnInit(): void {

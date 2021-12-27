@@ -33,10 +33,9 @@ export class SaveCategoriesComponent implements OnInit {
   }
 
   submitForm(form: FormGroupDirective){
-    
+    this.createSlug();
     if(this.formCategories.valid){
       const params = this.formCategories.value;
-      console.log(params);
       if(this.categoryDetail.id.length){
         params.id = this.categoryDetail.id;
         // this.dataUpdateTodo.emit(params);

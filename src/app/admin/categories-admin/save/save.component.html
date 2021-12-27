@@ -1,7 +1,7 @@
 <form novalidate [formGroup]="formCategories" (ngSubmit)="submitForm(form)" #form='ngForm'>
   <div class="mb-20">
     <label class="mb-10">Name</label>
-    <input nz-input id="name" formControlName="name" (input)="createSlug()" required />
+    <input nz-input id="name" formControlName="name" (change)="createSlug()" required />
     <div class="mt-10" *ngIf="formCategories.controls['name'].invalid && (formCategories.controls['name'].dirty || formCategories.controls['name'].touched || form.submitted)">
       <div class="text-danger">Name is required</div>
     </div>

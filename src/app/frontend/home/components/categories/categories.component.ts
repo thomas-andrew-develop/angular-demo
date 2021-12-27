@@ -20,6 +20,5 @@ export class CategoriesComponent implements OnInit {
   selectCategory(value: any){
     this.categoryActive = value;
     this.getCategory.emit(value);
-    
   }
 }

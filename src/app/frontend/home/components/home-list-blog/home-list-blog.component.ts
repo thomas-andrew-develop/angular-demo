@@ -1,5 +1,4 @@
 import { Component, OnInit, Input } from '@angular/core';
-
 @Component({
   selector: 'app-home-list-blog',
   templateUrl: './home-list-blog.component.html',
@@ -7,16 +6,15 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class HomeListBlogComponent implements OnInit {
   @Input() blogs: any = [];
-  categoriesList = [];
+  @Input() categoriesList: any;
+
   constructor() { }
 
   ngOnInit(): void {
-    // this.categoriesList = JSON.parse(this.blogs.category);
+
   }
-
-  // getCategory(id:any){
-  //   let categoryName : any = this.categoriesList.find(category => category.id === id);
-  //   return categoryName.name;
-  // }
-
+  getCategoryName(id:any){
+    let categoryName : any = this.categoriesList.find((category: any) => category.id === id);
+    return categoryName.name;
+  }
 }

@@ -64,7 +64,7 @@
         <label class="mb-10 f-bold">Categories</label>
         <div  formArrayName="category" *ngFor="let categoryItem of categoriesList; let i=index" >
           <label class="mb-10 category-item">
-            <input type="checkbox" [value]="categoryItem.name"  (change)="onCheckboxChange($event)" />
+            <input type="checkbox" [value]="categoryItem.id" [checked]="categoriesListChecked.value.includes(categoryItem.id)" (change)="onCheckboxChange($event)" />
             {{categoryItem.name}}
           </label>
         </div>

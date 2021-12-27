@@ -12,15 +12,15 @@
           </div>
           <div class="excerpt mb-10">{{blog.excerpt}}</div>
           <div class="blog-category">
-            {{blog.category }}
-            <!-- <nz-space nzAlign="center" [nzSplit]="spaceSplit">
+            <!-- {{blog.category }} -->
+            <nz-space nzAlign="center" [nzSplit]="spaceSplit">
               <ng-template #spaceSplit>
                 <span>, </span>
               </ng-template>
-              <ng-container  *ngFor="let blogCategory of categoriesList">
-                <span *nzSpaceItem>{{blogCategory | uppercase}}</span>
+              <ng-container  *ngFor="let blogCategory of blog.category">
+                <span *nzSpaceItem>{{getCategoryName(blogCategory) | uppercase}}</span>
               </ng-container>
-            </nz-space>  -->
+            </nz-space> 
           </div>
         </div>
       </div>

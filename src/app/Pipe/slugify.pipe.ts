@@ -18,11 +18,18 @@ export class SlugifyPipe implements PipeTransform {
       .replace(/ý|ỳ|ỷ|ỹ|ỵ/gi, 'y')
       .replace(/đ/gi, 'd')
       .replace(/\`|\~|\!|\@|\#|\||\$|\%|\^|\&|\*|\(|\)|\+|\=|\,|\.|\/|\?|\>|\<|\'|\"|\:|\;|_/gi, '')
-      .replace(/\s+/g, '-')           // Replace spaces with -
-      .replace(/[^\w\-]+/g, '')       // Remove all non-word chars
-      .replace(/\-\-+/g, '-')         // Replace multiple - with single -
-      .replace(/^-+/, '')             // Trim - from start of text
-      .replace(/-+$/, '');            // Trim - from end of text
+      .replace(/ /gi, "-")
+      .replace(/\-\-\-\-\-/gi, '-')
+      .replace(/\-\-\-\-/gi, '-')
+      .replace(/\-\-\-/gi, '-')
+      .replace(/\-\-/gi, '-')
+
+      // .replace(/[^a-z0-9 -]/g, '')
+      // .replace(/\s+/g, '-')           // Replace spaces with -
+      // .replace(/[^\w\-]+/g, '')       // Remove all non-word chars
+      // .replace(/\-\-+/g, '-')         // Replace multiple - with single -
+      // .replace(/^-+/, '')             // Trim - from start of text
+      // .replace(/-+$/, '');            // Trim - from end of text
   }
 
 }

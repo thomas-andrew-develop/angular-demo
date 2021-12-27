@@ -7,37 +7,15 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class HomeLatestPostComponent implements OnInit {
   @Input() latestBlogs: any;
+  @Input() categoriesList: any;
   size = 20;
-  categoriesList = [
-    {
-      id: 1,
-      name: 'Commercial'
-    },
-    {
-      id: 2,
-      name: 'Design'
-    },
-    {
-      id: 3,
-      name: 'Nature'
-    },
-    {
-      id: 4,
-      name: 'People'
-    },
-    {
-      id: 5,
-      name: 'Photography'
-    }
-  ];
   constructor() { }
 
   ngOnInit(): void {
   }
 
-  getCategory(id:any){
-    let categoryName : any = this.categoriesList.find(category => category.id === id);
+  getCategoryName(id:any){
+    let categoryName : any = this.categoriesList.find((category: any) => category.id === id);
     return categoryName.name;
   }
-
 }

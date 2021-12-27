@@ -19,7 +19,7 @@ export class BlogComponent implements OnInit {
     this.fetchData(this.pageIndex, this.pageSize);
   }
 
-  fetchData(pageIndex: number,pageSize: number,){
+  fetchData(pageIndex: number,pageSize: number){
     let params = '?page='+pageIndex+'&limit='+pageSize;
     let paramsTotal = '';
     this.loading = true;
@@ -40,12 +40,12 @@ export class BlogComponent implements OnInit {
 
   deleteBlog(id: any){
     this.blogService.deleteBlogs(id).subscribe(data => {
-      // this.fetchData()
-    });
+      this.fetchData(this.pageIndex,this.pageSize)
+    },
+    err => alert('Please wait ...'));
   }
 
   onQueryParamsChange(params: NzTableQueryParams): void {
-    console.log(params);
     const { pageSize, pageIndex } = params;
     this.fetchData(pageIndex, pageSize);
   }

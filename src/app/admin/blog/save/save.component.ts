@@ -3,6 +3,7 @@ import { Validators, FormGroupDirective, FormGroup, FormControl, FormArray } fro
 import { BlogService } from '../../../Services/blog.service';
 import { SlugifyPipe } from '../../../Pipe/slugify.pipe';
 import {Router, ActivatedRoute} from '@angular/router';
+import { toArray } from 'rxjs/operators';  
 @Component({
   selector: 'app-save-blog',
   templateUrl: './save.component.html',
@@ -12,7 +13,9 @@ import {Router, ActivatedRoute} from '@angular/router';
 export class SaveBlogComponent implements OnInit {
   categoriesList : any;
 
-  categoriesChecked: any = []; 
+  
+
+  idBLog: any;
 
   formBlog : FormGroup = new FormGroup({
     title: new FormControl('', [Validators.required]),
@@ -22,10 +25,12 @@ export class SaveBlogComponent implements OnInit {
     status: new FormControl('1', [Validators.required]),
     image: new FormControl('', [Validators.required]),
     category: new FormArray([], [Validators.required]),
-    createdAt: new FormControl(''),
-    updatedAt: new FormControl(''),
+    createdAt: new FormControl(new Date()),
+    updatedAt: new FormControl(new Date()),
     sticky: new FormControl(false),
   });
+
+  categoriesListChecked: FormArray = this.formBlog.get('category') as FormArray;
 
 
   constructor(
@@ -37,46 +42,39 @@ export class SaveBlogComponent implements OnInit {
 
   ngOnInit(): void {
     this.getCategories();
-    const idBlog = this.activeRoute.snapshot.paramMap.get('id');
+    let idBlog = this.activeRoute.snapshot.paramMap.get('id');
     if(idBlog && idBlog != ''){
       this.getDetailBlog(idBlog);
     }
-    
+    console.log(this.categoriesListChecked);
   }
 
   getDetailBlog(id: any){
     this.blogService.detailBlog(id).subscribe(data => {
-      this.formBlog.setValue({
-        title: data.title,
-        slug: data.slug,
-        description: data.description,
-        excerpt: data.excerpt,
-        status: data.status,
-        image: data.image,
-        category: data.category,
-        createdAt: data.createdAt,
-        updatedAt: data.updatedAt,
+      data.category.forEach((item: any) => {
+        this.categoriesListChecked.push(new FormControl(item));
       });
-      this.categoriesChecked = data.category;
-      // let categoriesList = data.category;
-      // let i: number = 0;
-      // categoriesList.forEach((item: any) => {
-      //   console.log(item);
-      //   this.categoriesChecked.push(item);
-      //   i++;
-      // });
+      this.formBlog.controls['title'].setValue(data.title);
+      this.formBlog.controls['slug'].setValue(data.slug);
+      this.formBlog.controls['description'].setValue(data.description);
+      this.formBlog.controls['excerpt'].setValue(data.excerpt);
+      this.formBlog.controls['status'].setValue(data.status);
+      this.formBlog.controls['image'].setValue(data.image);
+      this.formBlog.controls['createdAt'].setValue(data.createdAt);
+      this.formBlog.controls['updatedAt'].setValue(data.updatedAt);
+      this.formBlog.controls['sticky'].setValue(data.sticky);
+      this.idBLog = data.id;
     });
   }
 
   onCheckboxChange(e: any) {
-    const checkArray: FormArray = this.formBlog.get('category') as FormArray;
     if (e.target.checked) {
-      checkArray.push(new FormControl(e.target.value));
+      this.categoriesListChecked.push(new FormControl(e.target.value));
     } else {
       let i: number = 0;
-      checkArray.controls.forEach((item: any) => {
+      this.categoriesListChecked.controls.forEach((item: any) => {
         if (item.value == e.target.value) {
-          checkArray.removeAt(i);
+          this.categoriesListChecked.removeAt(i);
           return;
         }
         i++;
@@ -91,23 +89,23 @@ export class SaveBlogComponent implements OnInit {
   }
 
   submitForm(form: FormGroupDirective){
-  
+    let idBlog = this.activeRoute.snapshot.paramMap.get('id');
+    let params = this.formBlog.value;
     if(this.formBlog.valid){
-      const params = this.formBlog.value;
-      params.createdAt = new Date();
-      params.updatedAt = new Date();
-      console.log(params);
-      // if(this.categoryDetail.id.length){
-        // params.id = this.categoryDetail.id;
-        // this.dataUpdateTodo.emit(params);
-      // }else{
-      this.blogService.addBlogs(params).subscribe(data => {
-        this.router.navigate(['/admin/blog']);
-      });
-      // }
+      if(idBlog && idBlog != ''){
+        params.updatedAt = new Date();
+        params.id = this.idBLog;
+        this.blogService.updateBlogs(params).subscribe(data => {
+          this.router.navigate(['/admin/blog']);
+        });
+      }else{
+        this.blogService.addBlogs(params).subscribe(data => {
+          this.router.navigate(['/admin/blog']);
+        });
+      }
       
-      // form.resetForm();
-      // this.formBlog.reset();
+      form.resetForm();
+      this.formBlog.reset();
     }
     
   }

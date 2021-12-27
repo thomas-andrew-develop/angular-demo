@@ -52,7 +52,6 @@ export class HomeComponent implements OnInit {
   changePage(val: any){
     this.index = val;
     this.getBlogs(this.category, val, this.limit);
-    console.log(this.category)
   }
 
   getCategory(category: any){

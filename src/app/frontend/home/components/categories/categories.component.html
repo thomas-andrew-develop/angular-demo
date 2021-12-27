@@ -8,8 +8,8 @@
     <ng-container  *ngFor="let categoryItem of categoriesList; let i = index">
       <span
         *nzSpaceItem
-        (click)="selectCategory(categoryItem.name)"
-        [ngClass]="categoryItem.name === categoryActive ?  'active' : ''"
+        (click)="selectCategory(categoryItem.id)"
+        [ngClass]="categoryItem.id === categoryActive ?  'active' : ''"
       >{{categoryItem.name}}</span>
     </ng-container>
   </nz-space> 

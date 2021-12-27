@@ -5,17 +5,16 @@
       <img alt="blog.title" [src]="blog.image" />
     </div>
     <div *nzSpaceItem class="info">
-      <!-- div class="blog-category"><div class="blog-category">
+      <div class="blog-category">
         <nz-space nzAlign="center" [nzSplit]="spaceSplit">
           <ng-template #spaceSplit>
             <span>, </span>
           </ng-template>
           <ng-container  *ngFor="let blogCategory of blog.category">
-            <span *nzSpaceItem>{{getCategory(blogCategory) | uppercase}}</span>
+            <span *nzSpaceItem>{{getCategoryName(blogCategory) | uppercase}}</span>
           </ng-container>
         </nz-space> 
-      </div> -->
-      <div class="blog-category">{{blog.category}}</div>
+      </div>
       <div class="title mb-10">
         <a>{{blog.title}}</a>
       </div>
