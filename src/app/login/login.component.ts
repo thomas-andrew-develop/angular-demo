@@ -21,6 +21,10 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     const payload = {};
+    const token = localStorage.getItem('token');
+    if (token && token != '') {
+      this.router.navigate(['/admin']);
+    }
   }
 
   onSubmit(): void {

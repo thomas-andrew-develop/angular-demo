@@ -44,7 +44,6 @@ export class SaveBlogComponent implements OnInit {
     if(idBlog && idBlog != ''){
       this.getDetailBlog(idBlog);
     }
-    console.log(this.categoriesListChecked);
   }
 
   getDetailBlog(id: any){
