@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, SimpleChanges, OnChanges } from '@angular/core';
 import { BlogService } from '../../Services/blog.service';
 import {Router, ActivatedRoute} from '@angular/router';
 
@@ -16,8 +16,11 @@ export class BlogDetailComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    let slugBlog = this.activeRoute.snapshot.paramMap.get('slug');
-    this.getDetailBlog(slugBlog);
+    
+    this.activeRoute.params.subscribe((params: any) => {
+      let slugBlog = params.slug;
+      this.getDetailBlog(slugBlog);
+    });
   }
 
   
@@ -26,8 +29,6 @@ export class BlogDetailComponent implements OnInit {
     let params = '?slug='+slug;
     this.blogService.fetchBlogs(params).subscribe(data => {
       this.blogDetail = data[0];
-      console.log(this.blogDetail)
     });
   }
-
 }
