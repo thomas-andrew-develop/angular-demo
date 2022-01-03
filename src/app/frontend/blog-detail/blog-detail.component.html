@@ -1,0 +1,13 @@
+<app-banner class="mb-30" [pageTitle]="blogDetail.title"></app-banner>
+<div class="container">
+  <div nz-row>
+    <div nz-col [nzXs]="24" [nzMd]="16">
+      <h1>{{blogDetail.title}}</h1>
+
+      <div class="description" [innerHTML]="blogDetail.description | noSanitize"></div>
+    </div>
+    <div nz-col [nzXs]="24" [nzMd]="8">
+      <app-blog-detail-featured></app-blog-detail-featured>
+    </div>
+  </div>
+</div>

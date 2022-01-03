@@ -3,12 +3,12 @@
     <div ngxMasonryItem *ngFor="let blog of blogs; let i = index" nz-col nzMd="12" class="mb-30">
       <div class="card-blog">
         <div class="image">
-          <img alt="blog.title" [src]="blog.image" />
+          <a [routerLink]="['/', blog.slug]"><img alt="blog.title" [src]="blog.image" /></a>
         </div>
         <div class="info">
           <div class="info-meta mb-10"><span>by Admin</span> <span class="pl-10">{{blog.createdAt | date: 'dd MMM yyyy' }}</span></div>
           <div class="title mb-10">
-            <a>{{blog.title}}</a>
+            <a [routerLink]="['/', blog.slug]">{{blog.title}}</a>
           </div>
           <div class="excerpt mb-10">{{blog.excerpt}}</div>
           <div class="blog-category">

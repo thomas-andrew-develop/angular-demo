@@ -16,6 +16,9 @@ export class HomeLatestPostComponent implements OnInit {
 
   getCategoryName(id:any){
     let categoryName : any = this.categoriesList.find((category: any) => category.id === id);
-    return categoryName.name;
+    if(categoryName){
+      return categoryName.name;
+    }
+    
   }
 }

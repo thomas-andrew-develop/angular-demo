@@ -10,6 +10,7 @@ const routes: Routes = [
   { path: '', component: FrontendComponent , children: [
     { path: '', loadChildren: () => import('./frontend/home/home.module').then(m => m.HomeModule) },
     { path: 'about', loadChildren: () => import('./frontend/about/about.module').then(m => m.AboutModule) },
+    {path: ':slug', loadChildren: () => import('./frontend/blog-detail/blog-detail.module').then(m => m.BlogDetailModule)}
   ]},
   { 
     path: 'admin', 

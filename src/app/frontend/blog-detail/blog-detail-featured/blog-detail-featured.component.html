@@ -1,9 +1,9 @@
 <div class="featured">
-  <h3 class="title">Sticky Posts</h3>
+  <h3 class="title">Featured Posts</h3>
   <div *ngFor="let blog of latestBlogs; let i = index" class="item mb-20">
-    <nz-space nzAlign="center" [nzSize]="size">
+    <nz-space nzAlign="center" [nzSize]="8">
       <div *nzSpaceItem class="image">
-        <img alt="blog.title" [src]="blog.image" />
+        <img [alt]="blog.title" [src]="blog.image" />
       </div>
       <div *nzSpaceItem class="info">
         <div class="blog-category">
