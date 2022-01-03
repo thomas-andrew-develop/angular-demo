@@ -23,7 +23,8 @@ export class BlogDetailComponent implements OnInit {
   
 
   getDetailBlog(slug: any){
-    this.blogService.detailBlogBySlug(slug).subscribe(data => {
+    let params = '?slug='+slug;
+    this.blogService.fetchBlogs(params).subscribe(data => {
       this.blogDetail = data[0];
       console.log(this.blogDetail)
     });

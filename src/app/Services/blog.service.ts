@@ -31,9 +31,6 @@ export class BlogService {
   detailBlog(payload: any): Observable<any>{
     return this.httpClient.get(this.API_URL+'/blogs/'+payload, payload);
   }
-  detailBlogBySlug(payload: any): Observable<any>{
-    return this.httpClient.get(this.API_URL+'/blogs?slug='+payload, payload);
-  }
   
   fetchCategories(): Observable<any>{
     return this.httpClient.get(this.API_URL+'/categories');

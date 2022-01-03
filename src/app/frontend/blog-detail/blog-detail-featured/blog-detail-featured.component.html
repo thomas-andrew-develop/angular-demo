@@ -3,7 +3,7 @@
   <div *ngFor="let blog of latestBlogs; let i = index" class="item mb-20">
     <nz-space nzAlign="center" [nzSize]="8">
       <div *nzSpaceItem class="image">
-        <img [alt]="blog.title" [src]="blog.image" />
+        <a [routerLink]="['/', blog.slug]"><img [alt]="blog.title" [src]="blog.image" /></a>
       </div>
       <div *nzSpaceItem class="info">
         <div class="blog-category">
@@ -17,7 +17,7 @@
           </nz-space> 
         </div>
         <div class="title mb-10">
-          <a>{{blog.title}}</a>
+          <a [routerLink]="['/', blog.slug]">{{blog.title}}</a>
         </div>
       </div>
     </nz-space>

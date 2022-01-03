@@ -12,6 +12,7 @@ export class BlogDetailFeaturedComponent implements OnInit {
 
   ngOnInit(): void {
     this.getBlogFeatured();
+    this.getCategories();
   }
   getBlogFeatured(){
     let params = '?page=1&limit=3';
