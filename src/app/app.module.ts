@@ -14,6 +14,7 @@ import { FrontendModule } from './frontend/frontend.module'
 import { AdminModule } from './admin/admin.module';
 import { AuthGuardService } from './Services/Auth/auth-guard.service';
 
+
 registerLocaleData(en);
 @NgModule({
   declarations: [

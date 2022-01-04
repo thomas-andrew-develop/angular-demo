@@ -12,7 +12,6 @@ export class BlogDetailComponent implements OnInit {
   constructor(
     private blogService: BlogService,
     private activeRoute: ActivatedRoute,
-    private router: Router,
   ) { }
 
   ngOnInit(): void {

@@ -10,6 +10,19 @@
         <nav class="header__navbar">
           <ul>
             <li><a routerLink="/">Home</a></li>
+            <li>
+              <a nz-dropdown [nzDropdownMenu]="menu">
+                Category
+                <i nz-icon nzType="down"></i>
+              </a>
+              <nz-dropdown-menu #menu="nzDropdownMenu">
+                <ul nz-menu nzSelectable>
+                  <li nz-menu-item *ngFor="let categoryItem of categoriesList; let i = index">
+                    <a [routerLink]="['/category/', categoryItem.slug]">{{categoryItem.name}}</a>
+                  </li>
+                </ul>
+              </nz-dropdown-menu>
+            </li>
             <li><a routerLink="/about">About</a></li>
             <li *ngIf="isAuth == false"><a routerLink="/login">Login</a></li>
             <li *ngIf="isAuth == true"><a routerLink="/admin">Admin</a></li>

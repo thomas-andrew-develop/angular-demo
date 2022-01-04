@@ -8,18 +8,20 @@ import { NzGridModule } from 'ng-zorro-antd/grid';
 import { NoSanitizePipe } from '../../Pipe/no-sanitize.pipe';
 import { BlogDetailFeaturedComponent } from './blog-detail-featured/blog-detail-featured.component';
 import { NzSpaceModule } from 'ng-zorro-antd/space';
+import { CategoryNamePipe } from '../../Pipe/category-name.pipe';
 @NgModule({
   declarations: [
     BlogDetailComponent,
     NoSanitizePipe,
-    BlogDetailFeaturedComponent
+    BlogDetailFeaturedComponent,
+    CategoryNamePipe
   ],
   imports: [
     CommonModule,
     BlogDetailRoutingModule,
     BannerModule,
     NzGridModule,
-    NzSpaceModule
+    NzSpaceModule,
   ]
 })
 export class BlogDetailModule { }

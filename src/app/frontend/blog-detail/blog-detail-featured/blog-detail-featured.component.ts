@@ -28,9 +28,10 @@ export class BlogDetailFeaturedComponent implements OnInit {
   }
 
   getCategoryName(id:any){
-    let categoryName : any = this.categoriesList.find((category: any) => category.id === id);
-    if(categoryName){
-      return categoryName.name;
+    let categoryName : String = '';
+    let category : any = this.categoriesList.find((category: any) => category.id === id);
+    if(category){
+      return categoryName = category.name;
     }
   }
 }

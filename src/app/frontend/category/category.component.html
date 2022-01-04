@@ -1,0 +1,32 @@
+<app-banner [pageTitle]="'Category'"></app-banner>
+<div class="container mt-40 mb-60">
+  <ngx-masonry>
+    <div nz-row [nzGutter]="30">
+      <div ngxMasonryItem *ngFor="let blog of blogs; let i = index" nz-col nzMd="8" class="mb-30">
+        <div class="card-blog">
+          <div class="image">
+            <a [routerLink]="['/', blog.slug]"><img alt="blog.title" [src]="blog.image" /></a>
+          </div>
+          <div class="info">
+            <div class="info-meta mb-10"><span>by Admin</span> <span class="pl-10">{{blog.createdAt | date: 'dd MMM yyyy' }}</span></div>
+            <div class="title mb-10">
+              <a [routerLink]="['/', blog.slug]">{{blog.title}}</a>
+            </div>
+            <div class="excerpt mb-10">{{blog.excerpt}}</div>
+            <div class="blog-category">
+              <!-- {{blog.category }} -->
+              <!-- <nz-space nzAlign="center" [nzSplit]="spaceSplit">
+                <ng-template #spaceSplit>
+                  <span>, </span>
+                </ng-template>
+                <ng-container  *ngFor="let blogCategory of blog.category">
+                  <span *nzSpaceItem>{{getCategoryName(blogCategory) | uppercase}}</span>
+                </ng-container>
+              </nz-space>  -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ngx-masonry>
+</div>
