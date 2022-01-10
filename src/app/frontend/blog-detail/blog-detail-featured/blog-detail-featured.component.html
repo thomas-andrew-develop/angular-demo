@@ -12,9 +12,9 @@
               <span>, </span>
             </ng-template>
             <ng-container  *ngFor="let blogCategory of blog.category">
-              <span *nzSpaceItem>{{blogCategory | categoryName}}</span>
+              <span *nzSpaceItem>{{blogCategory | categoryName: categoriesList}}</span>
             </ng-container>
-          </nz-space> 
+          </nz-space>
         </div>
         <div class="title mb-10">
           <a [routerLink]="['/', blog.slug]">{{blog.title}}</a>
