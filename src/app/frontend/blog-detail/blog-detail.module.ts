@@ -16,13 +16,13 @@ import { CategoryNamePipe } from '../../Pipe/category-name.pipe';
     BlogDetailFeaturedComponent,
     CategoryNamePipe
   ],
-  imports: [
-    CommonModule,
-    BlogDetailRoutingModule,
-    BannerModule,
-    NzGridModule,
-    NzSpaceModule,
-  ],
+    imports: [
+        CommonModule,
+        BlogDetailRoutingModule,
+        BannerModule,
+        NzGridModule,
+        NzSpaceModule
+    ],
   exports: [CategoryNamePipe]
 })
 export class BlogDetailModule { }
