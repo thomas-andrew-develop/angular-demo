@@ -7,9 +7,11 @@ import { BlogService } from '../Services/blog.service';
 export class CategoryNamePipe implements PipeTransform {
   constructor(private blogService: BlogService) { }
   transform(id: any): any {
-    this.blogService.fetchCategories().subscribe(categories => {
-      let category : any = categories.find((category: any) => category.id === id);
-      return category.name;
+    return this.blogService.fetchCategories().subscribe(categories => {
+      let category : object = categories.find((category: any) => category.id === id);
+      console.log(typeof category.name)
+      console.log(category.name)
+      return String(category.name);
     });
   }
 

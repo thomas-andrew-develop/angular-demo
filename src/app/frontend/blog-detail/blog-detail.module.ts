@@ -22,6 +22,7 @@ import { CategoryNamePipe } from '../../Pipe/category-name.pipe';
     BannerModule,
     NzGridModule,
     NzSpaceModule,
-  ]
+  ],
+  exports: [CategoryNamePipe]
 })
 export class BlogDetailModule { }
