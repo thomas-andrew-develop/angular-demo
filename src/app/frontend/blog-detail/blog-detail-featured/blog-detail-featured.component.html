@@ -12,7 +12,7 @@
               <span>, </span>
             </ng-template>
             <ng-container  *ngFor="let blogCategory of blog.category">
-              <span>{{blogCategory | categoryName: categoriesList}}</span>
+              <span *nzSpaceItem>{{blogCategory | categoryName: categoriesList}}</span>
             </ng-container>
           </nz-space>
         </div>
