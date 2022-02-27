@@ -7,19 +7,21 @@ import {
 } from './Services/Auth/auth-guard.service';
 
 const routes: Routes = [
+  { path: 'login', loadChildren: () => import('./login/login.module').then(m => m.LoginModule) },
+  { path: 'todos', loadChildren: () => import('./todos/todos.module').then(m => m.TodosModule) },
+  { 
+    path: 'admin', 
+    loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule),
+    canActivate: [AuthGuard] 
+  },
   { path: '', component: FrontendComponent , children: [
     { path: '', loadChildren: () => import('./frontend/home/home.module').then(m => m.HomeModule) },
     { path: 'about', loadChildren: () => import('./frontend/about/about.module').then(m => m.AboutModule) },
     {path: ':slug', loadChildren: () => import('./frontend/blog-detail/blog-detail.module').then(m => m.BlogDetailModule)},
     { path: 'category/:slug', loadChildren: () => import('./frontend/category/category.module').then(m => m.CategoryModule) },
   ]},
-  { 
-    path: 'admin', 
-    loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule),
-    canActivate: [AuthGuard] 
-  },
-  { path: 'login', loadChildren: () => import('./login/login.module').then(m => m.LoginModule) },
-  { path: 'todos', loadChildren: () => import('./todos/todos.module').then(m => m.TodosModule) },
+  
+  
   
   
   { path: '**', pathMatch: 'full', component: NotFoundComponent }
